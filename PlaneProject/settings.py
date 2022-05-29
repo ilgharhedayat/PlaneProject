@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     "passangers.apps.PassangersConfig",
     "hotels.apps.HotelsConfig",
     "core.apps.CoreConfig",
+    "jobs.apps.JobsConfig",
+    "blog.apps.BlogConfig",
     # third
     "widget_tweaks",
     "django_extensions",
