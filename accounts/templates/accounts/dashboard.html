@@ -1,0 +1,256 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/flyStyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.rtl.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>خرید بلیط</title>
+{% endblock style %}
+{% block content %}
+    <main class="d-flex py-3 justify-content-between align-items-start">
+
+        <section class="results col-md-12  ">
+            <div style="height: 58px; border-radius: 10px; box-shadow: 0 0 10px lightgray;"
+                 class="mb-3 fly-day bg-white d-flex align-items-center justify-content-center">
+                <div class="d-flex days-div align-items-center justify-content-center" style="height: inherit;">
+                    <a href="{% url "accounts:dashboard" %}" style="color: #9c33d1;">
+                <span class="px-2" style="border-left: 1px dotted #836691;">
+                            <span>پروفایل</span>
+                        </span>
+                    </a>
+                    <a href="{% url "accounts:doc" %}" style="color: #9c33d1;">
+                <span class="px-2" style="border-left: 1px dotted #836691;">
+                            <span>مدارک</span>
+                        </span>
+                    </a>
+                    <a href="{% url "accounts:pass_change" %}" style="color: #9c33d1;">
+                <span class="px-2" style="border-left: 1px dotted #836691;">
+                            <span>تعویض رمز</span>
+                        </span>
+                    </a>
+                    <a href="{% url "accounts:logout" %}" style="color: #9c33d1;">
+                <span class="px-2" style="border-left: 1px dotted #836691;">
+                            <span>حروج</span>
+                        </span>
+                    </a>
+
+                </div>
+
+            </div>
+            <div class="profile-panel">
+                <div class="profile-info">
+                    <span>نام:</span>
+                    <span>{{ user.first_name }}</span>
+                </div>
+                <div class="profile-info">
+                    <span>نام خانوادگی:</span>
+                    <span>{{ user.last_name }}</span>
+                </div>
+                <div class="profile-info">
+                    <span>موبایل:</span>
+                    <span>{{ user.phone_number }}</span>
+                </div>
+                <div class="profile-info">
+                    <span>ایمیل:</span>
+                    <span>{{ user.email }}</span>
+                </div>
+            </div>
+            <div>
+                <div class="tab-pane my-tabs">
+                <span data-target="tab_1" class="active">
+                    بلیط هواپیما
+                </span>
+                    <span data-target="tab_2">
+                    بلیط هتل
+                </span>
+                </div>
+                <div class="tab-content">
+                    <div class="my_tab" id="tab_1">
+                        {% for reservarion in user.reservation.all %}
+                            <section style="border-radius: 10px; box-shadow: 0 0 10px lightgray;"
+                                     class="my-3 p-2 ticket d-flex bg-white justify-content-center align-items-center">
+                            <div class="col-9 d-flex flex-column">
+                                <div class="d-flex justify-content-start align-items-center">
+                                    <div class="d-flex ticket-img mx-5 flex-column text-center align-items-center justify-content-center">
+                                        <img src="{{ trip.image }}" height="35" width="35" alt="">
+                                        <div class="mt-2" style="font-size: 12px;">{{ trip.airline_name }}</div>
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center align-items-start">
+                                        <div class="mb-3 mt-2">
+                                    <span class="mx-1 p-1 rounded-pill"
+                                          style="background-color: #F8FAFB; font-size: 12px;">سیستمی</span>
+                                            <span class="mx-1 p-1 rounded-pill"
+                                                  style="background-color: #F8FAFB; font-size: 12px;">اکونومی</span>
+                                            <span class="mx-1 p-1 rounded-pill"
+                                                  style="background-color: #F8FAFB; font-size: 12px;">Boeing 737</span>
+                                        </div>
+                                        <div class="d-flex my-3 justify-content-start align-items-center">
+                                            <div class="d-flex mx-3">
+                                                <h5 name="origin" class="me-2">{{ trip.Origin }}</h5>
+                                                <h4 class="fw-bold">{{ trip.DepartureTime }}</h4>
+                                            </div>
+                                            <div class="d-flex time-design align-items-center">
+                                                <div style="color: #BEC6CC;"> +----------------o</div>
+                                            </div>
+                                            <div style="display: none;" class="time-design-mobile align-items-center">
+                                                <div style="color: #BEC6CC;"> --></div>
+                                            </div>
+                                            <div class="d-flex mx-3">
+                                                <h5 name="Destination" class="me-2">{{ trip.Destination }}</h5>
+                                                <h4 name="ArrivalTime" class="fw-bold">{{ trip.ArrivalTime }}</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <a data-bs-toggle="modal" data-bs-target="#extraditionRules" class="mx-3" href=""
+                                       style="font-size: 12px;">قوانین استرداد</a>
+                                </div>
+                            </div>
+                            <div class="col-3 px-4 d-flex flex-column align-items-center justify-content-center ticket-price"
+                                 style="height: inherit; border-right: 1px dotted #9c33d1;">
+                                <div class="d-flex mb-2 text-primary">
+                                    <h4 class="fw-bold">{{ trip.AdultTotalPrices }}</h4>
+                                    <small class="ms-2 mt-1">ریال</small>
+                                </div>
+                                <form method="post" action="{% url " passengers:passenger" %}
+                                " style="display: none">
+                                {% csrf_token %}
+                                <input type="hidden" name="AdultTotalPrices" value="{{ trip.AdultTotalPrices }}">
+                                <input type="hidden" name="ArrivalTime" value="{{ trip.ArrivalTime }}">
+                                <input type="hidden" name="Destination" value="{{ trip.Destination }}">
+                                <input type="hidden" name="DepartureTime" value="{{ trip.DepartureTime }}">
+                                <input type="hidden" name="Origin" value="{{ trip.Origin }}">
+                                <input type="hidden" name="Origin" value="{{ trip.Origin }}">
+                                <input type="hidden" name="airline_name" value="{{ trip.airline_name }}">
+                                <button type="submit" id="formSubmit_{{ forloop.counter }}"></button>
+                                </form>
+                                <button type="button" onclick="parsaSubmit({{ forloop.counter }})"
+                                        style="border-radius: 7px;"
+                                        class="btn w-100 btn-primary">
+                                    خرید بلیط
+                                </button>
+                                <small class="mt-2 text-danger">{{ trip.ClassesStatus }}</small>
+                            </div>
+                            <!--                        {% empty %}-->
+                            <!--                        <h1 class="text-center">شما هیج رزروی تا به حال نداشتید</h1>-->
+                        {% endfor %}
+                        </section>
+                    </div>
+                    <div class="my_tab" id="tab_2">
+                        {% for reservarion in user.reservation.all %}
+                            <section style="border-radius: 10px; box-shadow: 0 0 10px lightgray;"
+                                     class="my-3 p-2 ticket d-flex bg-white justify-content-center align-items-center">
+                            <div class="col-9 d-flex flex-column">
+                                <div class="d-flex justify-content-start align-items-center">
+                                    <div class="d-flex ticket-img mx-5 flex-column text-center align-items-center justify-content-center">
+                                        <img src="{{ trip.image }}" height="35" width="35" alt="">
+                                        <div class="mt-2" style="font-size: 12px;">{{ trip.airline_name }}</div>
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center align-items-start">
+                                        <div class="mb-3 mt-2">
+                                    <span class="mx-1 p-1 rounded-pill"
+                                          style="background-color: #F8FAFB; font-size: 12px;">سیستمی</span>
+                                            <span class="mx-1 p-1 rounded-pill"
+                                                  style="background-color: #F8FAFB; font-size: 12px;">اکونومی</span>
+                                            <span class="mx-1 p-1 rounded-pill"
+                                                  style="background-color: #F8FAFB; font-size: 12px;">Boeing 737</span>
+                                        </div>
+                                        <div class="d-flex my-3 justify-content-start align-items-center">
+                                            <div class="d-flex mx-3">
+                                                <h5 name="origin" class="me-2">{{ trip.Origin }}</h5>
+                                                <h4 class="fw-bold">{{ trip.DepartureTime }}</h4>
+                                            </div>
+                                            <div class="d-flex time-design align-items-center">
+                                                <div style="color: #BEC6CC;"> +----------------o</div>
+                                            </div>
+                                            <div style="display: none;" class="time-design-mobile align-items-center">
+                                                <div style="color: #BEC6CC;"> --></div>
+                                            </div>
+                                            <div class="d-flex mx-3">
+                                                <h5 name="Destination" class="me-2">{{ trip.Destination }}</h5>
+                                                <h4 name="ArrivalTime" class="fw-bold">{{ trip.ArrivalTime }}</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <a data-bs-toggle="modal" data-bs-target="#extraditionRules" class="mx-3" href=""
+                                       style="font-size: 12px;">قوانین استرداد</a>
+                                </div>
+                            </div>
+                            <div class="col-3 px-4 d-flex flex-column align-items-center justify-content-center ticket-price"
+                                 style="height: inherit; border-right: 1px dotted #9c33d1;">
+                                <div class="d-flex mb-2 text-primary">
+                                    <h4 class="fw-bold">{{ trip.AdultTotalPrices }}</h4>
+                                    <small class="ms-2 mt-1">ریال</small>
+                                </div>
+                                <form method="post" action="{% url "passengers:passenger" %}
+                                " style="display: none">
+                                {% csrf_token %}
+                                <input type="hidden" name="AdultTotalPrices" value="{{ trip.AdultTotalPrices }}">
+                                <input type="hidden" name="ArrivalTime" value="{{ trip.ArrivalTime }}">
+                                <input type="hidden" name="Destination" value="{{ trip.Destination }}">
+                                <input type="hidden" name="DepartureTime" value="{{ trip.DepartureTime }}">
+                                <input type="hidden" name="Origin" value="{{ trip.Origin }}">
+                                <input type="hidden" name="Origin" value="{{ trip.Origin }}">
+                                <input type="hidden" name="airline_name" value="{{ trip.airline_name }}">
+                                <button type="submit" id="formSubmit_{{ forloop.counter }}"></button>
+                                </form>
+                                <button type="button" onclick="parsaSubmit({{ forloop.counter }})"
+                                        style="border-radius: 7px;"
+                                        class="btn w-100 btn-primary">
+                                    خرید بلیط
+                                </button>
+                                <small class="mt-2 text-danger">{{ trip.ClassesStatus }}</small>
+                            </div>
+                            <!--                        {% empty %}-->
+                            <!--                        <h1 class="text-center">شما هیج رزروی تا به حال نداشتید</h1>-->
+                        {% endfor %}
+                        </section>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <div class="modal fade" id="extraditionRules" tabindex="-1" aria-labelledby="extraditionRulesLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="extraditionRulesLabel">قوانین استرداد</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex my-3">
+                        <h5 class="text-danger me-3 fw-bold">30%</h5>
+                        <div>از زمان صدور بلیط تا 12:00 ظهر 3 روز قبل از پرواز</div>
+                    </div>
+                    <div class="d-flex my-3">
+                        <h5 class="text-danger me-3 fw-bold">40%</h5>
+                        <div>از 12:00 ظهر 3 روز قبل از پرواز تا 12:00 ظهر 1 روز قبل از پرواز</div>
+                    </div>
+                    <div class="d-flex my-3">
+                        <h5 class="text-danger me-3 fw-bold">50%</h5>
+                        <div>از 12:00 ظهر 1 روز قبل از پرواز تا 5 ساعت قبل از پرواز</div>
+                    </div>
+                    <div class="d-flex my-3">
+                        <h5 class="text-danger me-3 fw-bold">60%</h5>
+                        <div>از 5 ساعت قبل از پرواز به بعد</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function parsaSubmit(counter) {
+            document.getElementById('formSubmit_' + counter.toString()).click();
+        }
+    </script>
+
+{% endblock %}

@@ -1,0 +1,437 @@
+/*=====main======*/
+main{
+    width: 80%;
+    margin: auto;
+    min-height: 100vh;
+}
+.progressContainer {
+	position: relative;
+}
+.steps {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	transform: translateY(15px);
+	width: 60%;
+	margin: auto;
+	z-index: 2;
+
+}
+.step {
+	width: 30px;
+	height: 30px;
+	background: #fff;
+	border: 5px solid lightgray;
+	border-radius: 50%;
+	transition: background 1s;
+    z-index: 2;
+}
+.step.selected {
+	border: 2px solid #4B81BD;   
+}
+.step.completed {
+    border: 2px solid #132E54;
+    background: #03c72e; 
+}
+.step.finished{
+	background-color: darkgreen;
+	border: 2px solid lightgray;
+}
+.step1.finished::after{
+	  content: 'انتخاب پرواز';
+	  position: absolute;
+      font-size: 14px;
+	  top: 100%;
+	  transform: translateX(20px);
+  }
+.step2.completed::after{
+	content: 'مشخصات مسافران';
+	position: absolute;
+	top: 100%;
+	transform: translateX(45px) !important;
+}
+.step3.completed::after{
+	content: 'ارسال';
+	position: absolute;
+	top: 100%;
+}
+.step4.completed::after{
+	content: 'پرداخت';
+	position: absolute;
+	top: 100%;
+	transform: translateX(5px);
+}
+.progressBar {
+	position: absolute;
+	width: 59%;
+	left: 50%;
+	height: 30px;
+	border-bottom: 2px solid black !important;
+	z-index: 1;
+	transform: translateX(-50%);
+}
+.percent {
+	position: absolute;
+	width: 0;
+	height: 100%;
+	border-bottom: 2px solid blue;
+	z-index: 1;
+	transition: width 1s;
+}
+.information, .email-send, .rules-submit{
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px lightgray;
+}
+.information form{
+    width: 80%;
+    margin: auto;
+}
+.information form input, .information form select{
+    height: 50px !important;
+    margin: 10px 0;
+    width: 222px;
+} 
+@media (max-width: 378.98px) {
+	.ticket>.col-9>div.justify-content-start{
+	  flex-direction: column;
+	}
+}
+@media (max-width: 575.98px) {
+	main{
+		width: 98%;
+	  }
+	.results.col-9{
+		width: 100% !important;
+		padding: 10px !important;
+		margin-right: 0 !important;
+	}
+	.results *{
+		font-size: 10px !important;
+	}
+	.ticket>.col-9>div.justify-content-start{
+		justify-content: space-evenly !important;
+	  }
+	  .ticket>.col-9{
+		width:70% !important;
+		height: 100%;
+		justify-content: space-between !important;
+	  }
+	  .ticket-sum>div.justify-content-between{
+		flex-direction: column;
+		justify-content: center !important;
+	  }
+	  .ticket>.col-3{
+		width: 30% !important;
+	  }
+	  .time-design-mobile{
+		display: inline-block !important;
+	  }
+	  .time-design.d-flex{
+		display: none !important;
+	  }
+	  .ticket-img.mx-5{
+		margin: 0px !important;
+	  }
+	  .ticket-price *{
+		font-size: 12px !important;
+	  }
+	  .ticket-price>div>.mt-1{
+		margin: 0 5px 0 0 !important;
+	  }
+	  .ticket-price>div>.fw-bold{
+		margin: 3px 0 0 0 !important;
+	  }
+	  .ticket-price>a.btn, .ticket-price>.text-danger{
+		font-size: 10px !important;
+	  }
+	  .email-send *, .email-send .form-check-label{ 
+		font-size: 14px !important;
+	  }
+	  .email-send{
+		flex-direction: column;
+	  }
+	  .email-send .form-check-label{
+		margin-bottom: 20px !important;
+	}
+	  .rules-submit>div{
+		  margin-bottom: 20px !important;
+	  }
+	  .rules-submit{
+		  flex-direction: column;
+	  }
+	  .step1.finished::after{
+		  content: '';
+	  }
+	  .information>form{
+		  width: 100% !important;
+	  }
+	  .information>form>.justify-content-between *{
+		font-size: 12px !important;
+	  }
+	  .information>form>.justify-content-between{
+		  flex-wrap: wrap !important;
+		  justify-content: center !important;
+	  }
+	  .information form input, .information form select{
+		  width: 45%;
+	  }
+	  .birth-date.w-50{
+		  width: 93% !important;
+		  margin: auto !important;
+	  }
+	  .id-code.ms-2,.form-control.mx-2{
+		  margin: 5px !important;
+	  }
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+	main{
+		width: 98%;
+	  }
+	.results.col-9{
+		width: 100% !important;
+		padding: 10px !important;
+		margin-right: 0 !important;
+	}
+	.results *{
+		font-size: 14px !important;
+	}
+	.ticket>.col-9>div.justify-content-start{
+		justify-content: space-evenly !important;
+	  }
+	  .ticket>.col-9{
+		width:70% !important;
+		height: 100%;
+		justify-content: space-between !important;
+	  }
+	  .ticket-sum>div.justify-content-between{
+		flex-direction: column;
+		justify-content: center !important;
+	  }
+	  .ticket>.col-3{
+		width: 30% !important;
+	  }
+	  .time-design-mobile{
+		display: inline-block !important;
+	  }
+	  .time-design.d-flex{
+		display: none !important;
+	  }
+	  .ticket-img.mx-5{
+		margin: 0px !important;
+	  }
+	  .ticket-price *{
+		font-size: 12px !important;
+	  }
+	  .ticket-price>div>.mt-1{
+		margin: 0 5px 0 0 !important;
+	  }
+	  .ticket-price>div>.fw-bold{
+		margin: 3px 0 0 0 !important;
+	  }
+	  .ticket-price>a.btn, .ticket-price>.text-danger{
+		font-size: 10px !important;
+	  }
+	  .email-send *, .email-send .form-check-label{ 
+		font-size: 14px !important;
+	  }
+	  .email-send{
+		flex-direction: column;
+	  }
+	  .email-send .form-check-label{
+		margin-bottom: 20px !important;
+	}
+	  .rules-submit>div{
+		  margin-bottom: 20px !important;
+	  }
+	  .rules-submit{
+		  flex-direction: column;
+	  }
+	  .step1.finished::after{
+		  content: '';
+	  }
+	  .information>form{
+		  width: 100% !important;
+	  }
+	  .information>form>.justify-content-between *{
+		font-size: 12px !important;
+	  }
+	  .information>form>.justify-content-between{
+		  flex-wrap: wrap !important;
+		  justify-content: center !important;
+	  }
+	  .information form input, .information form select{
+		  width: 45%;
+	  }
+	  .birth-date.w-50{
+		  width: 93% !important;
+		  margin: auto !important;
+	  }
+	  .id-code.ms-2,.form-control.mx-2{
+		  margin: 5px !important;
+	  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+	main{
+		width: 90%;
+	  }
+	.results.col-9{
+		width: 100% !important;
+		padding: 10px !important;
+		margin-right: 0 !important;
+	}
+	.ticket>.col-9>div.justify-content-start{
+		justify-content: space-evenly !important;
+	  }
+	  .ticket>.col-9{
+		width:70% !important;
+		height: 100%;
+		justify-content: space-between !important;
+	  }
+	  .ticket-sum>div.justify-content-between{
+		flex-direction: column;
+		justify-content: center !important;
+	  }
+	  .ticket>.col-3{
+		width: 30% !important;
+	  }
+	  .time-design-mobile{
+		display: inline-block !important;
+	  }
+	  .time-design.d-flex{
+		display: none !important;
+	  }
+	  .ticket-img.mx-5{
+		margin: 0px !important;
+	  }
+	  .ticket-price *{
+		font-size: 12px !important;
+	  }
+	  .ticket-price>div>.mt-1{
+		margin: 0 5px 0 0 !important;
+	  }
+	  .ticket-price>div>.fw-bold{
+		margin: 3px 0 0 0 !important;
+	  }
+	  .ticket-price>a.btn, .ticket-price>.text-danger{
+		font-size: 10px !important;
+	  }
+	  .email-send *, .email-send .form-check-label{ 
+		font-size: 14px !important;
+	  }
+	  .email-send{
+		flex-direction: column;
+	  }
+	  .email-send .form-check-label{
+		margin-bottom: 20px !important;
+	}
+	  .rules-submit>div{
+		  margin-bottom: 20px !important;
+	  }
+	  .rules-submit{
+		  flex-direction: column;
+	  }
+	  .step1.finished::after{
+		  content: '';
+	  }
+	  .information>form{
+		  width: 100% !important;
+	  }
+	  .information>form>.justify-content-between *{
+		font-size: 12px !important;
+	  }
+	  .information>form>.justify-content-between{
+		  flex-wrap: wrap !important;
+		  justify-content: center !important;
+	  }
+	  .information form input, .information form select{
+		  width: 45%;
+	  }
+	  .birth-date.w-50{
+		  width: 93% !important;
+		  margin: auto !important;
+	  }
+	  .id-code.ms-2,.form-control.mx-2{
+		  margin: 5px !important;
+	  }
+}
+@media (min-width: 992px) and (max-width: 1023.98px) {
+	.information>form{
+		width: 100% !important;
+	}
+	.information>form>.justify-content-between{
+		flex-wrap: wrap !important;
+		justify-content: center !important;
+	}
+	.information form input, .information form select{
+		width: 45%;
+	}
+	.birth-date.w-50{
+		width: 93% !important;
+		margin: auto !important;
+	}
+	.id-code.ms-2,.form-control.mx-2{
+		margin: 5px !important;
+	}
+	.email-send .form-check-label{
+		margin-bottom: 20px !important;
+	}
+	.email-send *, .email-send .form-check-label{ 
+		font-size: 16px !important;
+	 }
+	 .email-send{
+		flex-direction: column;
+	 }
+}
+@media (min-width: 1024px) and (max-width: 1299.98px) {
+	.information>form{
+		width: 80% !important;
+	}
+	.information>form>.justify-content-between{
+		flex-wrap: wrap !important;
+		justify-content: center !important;
+	}
+	.information form input, .information form select{
+		width: 45%;
+	}
+	.birth-date.w-50{
+		width: 93% !important;
+		margin: auto !important;
+	}
+	.id-code.ms-2,.form-control.mx-2{
+		margin: 5px !important;
+	}
+	.email-send .form-check-label{
+		margin-bottom: 20px !important;
+	}
+	.email-send *, .email-send .form-check-label{ 
+		font-size: 16px !important;
+	 }
+	 .email-send{
+		flex-direction: column;
+	 }
+}
+@media (min-width: 1300px) and (max-width: 1599.98px) {}
+@media (min-width: 1600px) and (max-width: 1999.98px) {}
+@media (min-width: 2000px){}
+/* ===========header image============ */
+.header-image-container {
+    position: relative;
+    overflow-x: hidden;
+}
+
+.parallax-img {
+    background-image: url("../images/airplane.jfif");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 600px;
+}
+
+.plane-bottom {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}

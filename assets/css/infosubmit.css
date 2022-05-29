@@ -1,0 +1,286 @@
+/*=====main======*/
+main{
+    width: 80%;
+    margin: auto;
+    min-height: 100vh;
+}
+.progressContainer {
+	position: relative;
+}
+.steps {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	transform: translateY(15px);
+	width: 60%;
+	margin: auto;
+	z-index: 2;
+
+}
+.step {
+	width: 30px;
+	height: 30px;
+	background: #fff;
+	border: 5px solid lightgray;
+	border-radius: 50%;
+	transition: background 1s;
+    z-index: 2;
+}
+.step.selected {
+	border: 2px solid #4B81BD;   
+}
+.step.completed {
+    border: 2px solid #132E54;
+    background: #03c72e; 
+}
+.step.finished{
+	background-color: darkgreen;
+	border: 2px solid lightgray;
+}
+.step1.finished::after{
+	  content: 'انتخاب پرواز';
+	  position: absolute;
+      font-size: 14px;
+	  top: 100%;
+	  transform: translateX(20px);
+  }
+.step2.finished::after{
+	content: 'مشخصات مسافران';
+	position: absolute;
+    font-size: 14px;
+	top: 100%;
+	transform: translateX(45px) !important;
+}
+.step3.completed::after{
+	content: 'تایید اطلاعات';
+	position: absolute;
+	top: 100%;
+    transform: translateX(15px) !important;
+}
+.step4.completed::after{
+	content: 'پرداخت';
+	position: absolute;
+	top: 100%;
+	transform: translateX(5px);
+}
+.step5.completed::after{
+	content: 'صدور بلیط';
+	position: absolute;
+	top: 100%;
+	transform: translateX(5px);
+}
+
+.progressBar {
+	position: absolute;
+	width: 59%;
+	left: 50%;
+	height: 30px;
+	border-bottom: 2px solid black !important;
+	z-index: 1;
+	transform: translateX(-50%);
+}
+.percent {
+	position: absolute;
+	width: 0;
+	height: 100%;
+	border-bottom: 2px solid blue;
+	z-index: 1;
+	transition: width 1s;
+}
+.information, .fly-notices, .payment{
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px lightgray;
+}
+.information .table th{
+  width: 15% !important;
+  text-align: center;
+  background-color: #F6F6F6;
+}
+.information .table tr{
+  text-align: center;
+}
+.details-header>th{
+  font-size: 14px !important;
+  font-weight: bolder;
+}
+.details-body>td{
+  line-height: 30px !important;
+  vertical-align: middle !important; 
+}
+
+@media (max-width: 575.98px) {
+	main{
+		width: 100%;
+	}
+	.step1.finished::after{
+		content: '';
+	}
+	.step2.finished::after{
+		content: '';
+	}
+	.fly-notices h4.mt-1, .information h4.mt-1{
+		margin-top: 0 !important;
+	}
+	.fly-notices svg, .information svg{
+		width: 16px !important;
+		height: 16px !important;
+	}
+	.fly-notices.p-5 *,.information *{
+		font-size: 12px !important;
+	}
+	td{
+		vertical-align: middle !important;
+	}
+	.fly-notices.p-5, .information.p-5{
+		padding: 20px !important;
+	}
+	.email-phone.justify-content-start{
+		flex-direction: column;
+		justify-content: flex-end !important;
+		align-items: center !important;
+	}
+	.email-phone>div{
+		width: 100%;
+		margin: 0 !important;
+	}
+	.btn-accept-cancel{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.payment.justify-content-between{
+		flex-direction: column;
+		justify-content: center !important;
+	}
+	.payment>.text-primary{
+		justify-content: space-between;
+		margin-bottom: 10px !important;
+	}
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+	main{
+		width: 90%;
+	}
+	.step1.finished::after{
+		content: '';
+	}
+	.step2.finished::after{
+		content: '';
+	}
+	.fly-notices h4.mt-1, .information h4.mt-1{
+		margin-top: 0 !important;
+	}
+	.fly-notices svg, .information svg{
+		width: 16px !important;
+		height: 16px !important;
+	}
+	.fly-notices.p-5 *,.information *{
+		font-size: 12px !important;
+	}
+	td{
+		vertical-align: middle !important;
+	}
+	.fly-notices.p-5, .information.p-5{
+		padding: 20px !important;
+	}
+	
+	.btn-accept-cancel{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.payment.justify-content-between{
+		flex-direction: column;
+		justify-content: center !important;
+	}
+	.payment>.text-primary{
+		justify-content: space-between;
+		margin-bottom: 10px !important;
+	}
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+	main{
+		width: 80%;
+	}
+	.step1.finished::after{
+		content: '';
+	}
+	.step2.finished::after{
+		content: '';
+	}
+	.fly-notices svg, .information svg{
+		width: 25px !important;
+		height: 25px !important;
+	}
+	.fly-notices.p-5 *,.information *{
+		font-size: 16px !important;
+	}
+	td{
+		vertical-align: middle !important;
+	}
+	.fly-notices.p-5, .information.p-5{
+		padding: 20px !important;
+	}
+	
+	.btn-accept-cancel{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.payment.justify-content-between{
+		flex-direction: column;
+		justify-content: center !important;
+	}
+	.payment>.text-primary{
+		justify-content: space-between;
+		margin-bottom: 10px !important;
+	}
+}
+@media (min-width: 992px) and (max-width: 1023.98px) {
+	main{
+		width: 80%;
+	}
+	.step1.finished::after{
+		content: '';
+	}
+	.step2.finished::after{
+		content: '';
+	}
+	.fly-notices svg, .information svg{
+		width: 25px !important;
+		height: 25px !important;
+	}
+	.fly-notices.p-5 *,.information *{
+		font-size: 16px !important;
+	}
+	td{
+		vertical-align: middle !important;
+	}
+	.fly-notices.p-5, .information.p-5{
+		padding: 20px !important;
+	}
+	
+	.btn-accept-cancel{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.payment.justify-content-between{
+		flex-direction: column;
+		justify-content: center !important;
+	}
+	.payment>.text-primary{
+		justify-content: space-between;
+		margin-bottom: 10px !important;
+	}
+}
+@media (min-width: 1024px) and (max-width: 1299.98px) {
+	td{
+		vertical-align: middle !important;
+	}
+}
+@media (min-width: 1300px) and (max-width: 1599.98px) {}
+@media (min-width: 1600px) and (max-width: 1999.98px) {}
+@media (min-width: 2000px){}

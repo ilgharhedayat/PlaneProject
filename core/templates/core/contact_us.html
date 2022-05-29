@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static "css/otherstyle.css" %}">
+    <link rel="stylesheet" href="{% static "css/common.css" %}">
+    <link rel="stylesheet" href="{% static "css/bootstrap.rtl.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/animate.css" %}">
+    <link rel="stylesheet" href="{% static "css/owl.carousel.min.css" %}">
+    <title>تماس با ما</title>
+{% endblock style %}
+
+{% block content %}
+
+    <main>
+        <h4 class="my-5">تماس با ما</h4>
+        <section class="sign-in py-5">
+            <div>
+                <div class="sign-in-section d-flex flex-column align-items-center justify-content-CENTER px-5">
+                    <form method="post" action="" class="w-100">
+                        {% csrf_token %}
+                        <div class="input-group inputGP rounded-3 mx-2 my-3">
+                  <span class="input-group-text inputGPText text-secondary"><svg xmlns="http://www.w3.org/2000/svg"
+                                                                                 width="16" height="16"
+                                                                                 fill="currentColor"
+                                                                                 style="color: #A281B0;"
+                                                                                 class="bi bi-people-fill me-1"
+                                                                                 viewBox="0 0 16 16">
+                    <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                    <path fill-rule="evenodd"
+                          d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+                    <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                  </svg>
+                     {{ form.title.label }}
+                  </span>
+                            {{ form.title }}
+                        </div>
+                        <div class="input-group inputGP rounded-3 mx-2 my-3">
+                  <span class="input-group-text inputGPText text-secondary"><svg xmlns="http://www.w3.org/2000/svg"
+                                                                                 width="16" height="16"
+                                                                                 fill="currentColor"
+                                                                                 style="color: #A281B0;"
+                                                                                 class="bi bi-people-fill me-1"
+                                                                                 viewBox="0 0 16 16">
+                    <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                    <path fill-rule="evenodd"
+                          d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+                    <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                  </svg>
+                     {{ form.email.lable }}
+                  </span>
+                            {{ form.email }}
+                        </div>
+                        <div class="input-group inputGP rounded-3 mx-2 my-3">
+                  <span class="input-group-text inputGPText text-secondary"><svg xmlns="http://www.w3.org/2000/svg"
+                                                                                 width="16" height="16"
+                                                                                 fill="currentColor"
+                                                                                 style="color: #A281B0;"
+                                                                                 class="bi bi-people-fill me-1"
+                                                                                 viewBox="0 0 16 16">
+                    <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                    <path fill-rule="evenodd"
+                          d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+                    <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                  </svg>
+                     {{ form.phone_number.label }}
+                  </span>
+                            {{ form.phone_number }}
+                        </div>
+                        <div class="input-group inputGP rounded-3 mx-2 my-3">
+                  <span class="input-group-text inputGPText text-secondary"><svg xmlns="http://www.w3.org/2000/svg"
+                                                                                 width="16" height="16"
+                                                                                 fill="currentColor"
+                                                                                 style="color: #A281B0;"
+                                                                                 class="bi bi-people-fill me-1"
+                                                                                 viewBox="0 0 16 16">
+                    <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                    <path fill-rule="evenodd"
+                          d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+                    <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                  </svg>
+                     {{ form.text.label }}
+                  </span>
+                            {{ form.text }}
+                        </div>
+
+                        <div class="btnGP mt-5 d-flex flex-column justify-content-center align-items-center">
+                            <div class="my-1 d-flex justify-content-center align-items-center">
+                                <button type="submit" class="btn p-2 rounded-3 mx-1"
+                                        style="background-color: #852193; color: white;">ارسال<img
+                                        src="{% static 'icons/chevron-left.svg' %}" height="16" width="16" alt="">
+                                </button>
+
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+                <div class="px-5 signin-details d-flex justify-content-end align-items-start flex-column">
+                    <p style="line-height: 30px; color: #A281B0;font-weight: bold;" class="mt-4 mb-0">شما با عضویت در وب
+                        سایت علاوه بر پیوستن به خانواده ما و دسترسی به تمامی سرویس ها بصورت رایگان در بخش خدمات مشتریان
+                        از امکانات زیر برخوردار خواهید شد</p>
+                    <h4 style="color: #FFA809;" class="mt-4 mb-2">بخشی از امکانات باشگاه مشتریان</h4>
+                    <ul class="d-flex ps-0 flex-wrap">
+                        <li class="d-flex m-2">
+                            <span class="me-2"><img src="{% static 'icons/check.svg' %}"
+                                                    style="width: 25px; height: 25px;"
+                                                    alt=""></span>
+                            پشتیبانی آنلاین
+                        </li>
+                        <li class="d-flex m-2">
+                            <span class="me-2"><img src="{% static 'icons/check.svg' %}"
+                                                    style="width: 25px; height: 25px;"
+                                                    alt=""></span>
+                            خرید بلیط آنلاین
+                        </li>
+                        <li class="d-flex m-2">
+                            <span class="me-2"><img src="{% static 'icons/check.svg' %}"
+                                                    style="width: 25px; height: 25px;"
+                                                    alt=""></span>
+                            خدمات درخواست آنلاین
+                        </li>
+                        <li class="d-flex m-2">
+                            <span class="me-2"><img src="{% static 'icons/check.svg' %}"
+                                                    style="width: 25px; height: 25px;"
+                                                    alt=""></span>
+                            امکان استفاده از تخفیفات
+                        </li>
+                        <li class="d-flex m-2">
+                            <span class="me-2"><img src="{% static 'icons/check.svg' %}"
+                                                    style="width: 25px; height: 25px;"
+                                                    alt=""></span>
+                            ارسال پیشنهادات
+                        </li>
+                        <li class="d-flex m-2">
+                            <span class="me-2"><img src="{% static 'icons/check.svg' %}"
+                                                    style="width: 25px; height: 25px;"
+                                                    alt=""></span>
+                            استفاده از بلاگ
+                        </li>
+                        <li class="d-flex m-2">
+                            <span class="me-2"><img src="{% static 'icons/check.svg' %}"
+                                                    style="width: 25px; height: 25px;"
+                                                    alt=""></span>
+                            فرصت های شغلی
+                        </li>
+                        </ulclas>
+                </div>
+            </div>
+        </section>
+
+        <section class="features px-5 py-5 my-5">
+            <div class="icon-features d-flex flex-column align-items-center justify-content-end px-5"
+                 style="border-left: 1px dotted #A281B0;">
+                <div class="d-flex double-feature mb-4">
+                    <div class="single-feature d-flex justify-content-center align-items-center flex-column mx-2">
+                        <img class="my-2" src="{% static 'icons/icon2.png' %}" alt="icon">
+                        <small class="my-1">پوشش ۱۰۰ درصدی پروازها</small>
+                        <p class="my-1">خرید بلیط پروازهای داخلی و خارجی</p>
+                    </div>
+                    <div class="single-feature d-flex justify-content-center align-items-center flex-column mx-2">
+                        <img class="my-2" src="{% static 'icons/icon1.png' %}" alt="icon">
+                        <small class="my-1">دسترسی آسان از طریق وبسایت و موبایل</small>
+                        <p class="my-1">ساده‌ترین و سریع‌ترین راه برای جستجو، خرید و استرداد بلیط</p>
+                    </div>
+                </div>
+                <div class="expand-feature rounded-3 w-100 mt-4 d-flex justify-content-center align-items-center flex-column">
+                    <img class="my-2" src="{% static 'icons/icon3.png' %}" alt="icon">
+                    <small class="my-1">تضمین بهترین خدمات برای مسافرین</small>
+                    <p class="my-1">معتبرترین و به‌صرفه‌ترین سامانه فروش بلیط با پشتیبانی ۲۴ ساعته</p>
+                </div>
+            </div>
+
+            <div class="px-5 worldmap-feature d-flex justify-content-end align-items-center flex-column">
+                <img src="{% static 'images/worldmap.png' %}" alt="icon">
+                <p style="line-height: 30px;" class="mt-4 mb-0">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                    چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم
+                    است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد</p>
+            </div>
+        </section>
+
+    </main>
+
+{% endblock content %}

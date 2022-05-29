@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body onload="document.forms['form'].submit()">
+<form action="https://sep.shaparak.ir/MobilePG/MobilePayment" name="form" method="post">
+    <input type="hidden" value="token" name="action">
+    <input type="hidden" value="12594419" name="TerminalId">
+    <input type="hidden" value="https://parsa.best" name="RedirectUrl">
+    <input type="hidden" value="{{ info.ResNum }}" name="ResNum">
+    <input type="hidden" value="{{ info.amount }}" name="Amount">
+    <input type="hidden" value="{{ info.cell }}" name="CellNumber">
+</form>
+</body>
+</html>

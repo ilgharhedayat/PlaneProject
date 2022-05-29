@@ -1,0 +1,401 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/flyStyle.css' %}">
+<link rel="stylesheet" href="{% static 'css/common.css' %}">
+<link rel="stylesheet" href="{% static 'css/bootstrap.rtl.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+<link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<title>خرید بلیط</title>
+{% endblock style %}
+{% block content %}
+<main class="d-flex py-3 justify-content-between align-items-start">
+    <section class="results-filter me-2 col-3 rounded-3 p-3" style="height: fit-content;">
+        <div class="d-flex">
+            <div>نتایج:</div>
+            <div> {{ flight_count }}</div>
+        </div>
+        <hr>
+        <div class="my-2">
+            ساعت حرکت
+            <div class="Tooltip pt-1">
+                <div id="Tooltiptext1" style="color: black; float: right;" dir="ltr">07:00</div>
+                <input dir="ltr" type="range" min="07.00" max="23.00" value="0" class="slider" id="myRange"
+                       onchange="rangeValFunc(this.value);">
+                <div dir="ltr" style="transform: translateX(7px);" class="d-flex pt-1 justify-content-between">
+                    <span style="font-size: 12px; font-weight: bold; color: darkgrey;">07:00</span>
+                    <span style="font-size: 12px; font-weight: bold; color: darkgrey;">11:00</span>
+                    <span style="font-size: 12px; font-weight: bold; color: darkgrey;">14:00</span>
+                    <span style="font-size: 12px; font-weight: bold; color: darkgrey;">17:00</span>
+                    <span style="font-size: 12px; font-weight: bold; color: darkgrey;">20:00</span>
+                    <span style="font-size: 12px; font-weight: bold; color: darkgrey;">23:00</span>
+                </div>
+            </div>
+
+        </div>
+        <!--            <hr>-->
+        <!--            <div class="my-2">-->
+        <!--                نوع بلیط-->
+        <!--                <div class="my-4 d-flex flex-column  justify-content-start">-->
+        <!--                    <div class="form-check rounded-3 me-2 p-1 ps-0">-->
+        <!--                        <label style="color:#7e7d80;" class="form-check-label me-1" for="flexRadioDefault1">-->
+        <!--                            سیستمی-->
+        <!--                        </label>-->
+        <!--                        <input class="form-check-input me-2 ms-1" type="checkbox" id="flexRadioDefault1">-->
+        <!--                    </div>-->
+        <!--                    <div class="form-check rounded-3 me-2 p-1 ps-0">-->
+        <!--                        <label style="color:#7e7d80;" class="form-check-label me-1" for="flexRadioDefault2">-->
+        <!--                            چارتر-->
+        <!--                        </label>-->
+        <!--                        <input class="form-check-input me-2 ms-1" type="checkbox" id="flexRadioDefault2">-->
+        <!--                    </div>-->
+        <!--                </div>-->
+
+        <!--            </div>-->
+        <hr>
+        <div class="my-2">
+            شرکت های هواپیمایی
+            <div class="my-4 d-flex flex-column  justify-content-start">
+                {% for trip in temp %}
+                <div class="form-check rounded-3 me-2 p-1 ps-0">
+                    <label style="color:#7e7d80;" class="form-check-label me-1" for="iranair">
+                        <img src="{{ trip.logo.url }}" class="me-1" height="25" width="25" alt="">
+                        {{trip.name}}
+                    </label>
+                    <input class="form-check-input me-2 ms-1 airline_checkbox" type="checkbox" name="airlines[]"
+                           value="{{ trip.id }}">
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section class="results col-9 ms-2">
+            <span class="filterBtn p-2 my-4 rounded-pill"
+                  style="cursor:pointer;display: none  ; color: black; background-color: white;" onclick="openNav()">فیلترها</span>
+        <div id="mySidenav" class="sideNav bg-white">
+            <a style="padding: 5px 0px; font-size: 25px;" href="javascript:void(0)" class="closebtn text-primary"
+               onclick="closeNav()">&times;</a>
+            <div class="d-flex mx-3">
+                <div>نتایج:</div>
+                <div> {{ flight_count }}</div>
+            </div>
+            <hr>
+            <div class="my-2 mx-3">
+                ساعت حرکت
+                <div class="Tooltip pt-1">
+                    <div id="Tooltiptext1" style="color: black; float: right;" dir="ltr">07:00</div>
+                    <input dir="ltr" type="range" min="07.00" max="23.00" value="0" class="slider" id="myRange"
+                           onchange="rangeValFunc(this.value);">
+                    <div dir="ltr" style="transform: translateX(7px);" class="d-flex pt-1 justify-content-between">
+                        <span style="font-size: 12px; font-weight: bold; color: darkgrey;">07:00</span>
+                        <span style="font-size: 12px; font-weight: bold; color: darkgrey;">11:00</span>
+                        <span style="font-size: 12px; font-weight: bold; color: darkgrey;">14:00</span>
+                        <span style="font-size: 12px; font-weight: bold; color: darkgrey;">17:00</span>
+                        <span style="font-size: 12px; font-weight: bold; color: darkgrey;">20:00</span>
+                        <span style="font-size: 12px; font-weight: bold; color: darkgrey;">23:00</span>
+                    </div>
+                </div>
+
+            </div>
+            <hr>
+            <div class="my-2 mx-3">
+                نوع بلیط
+                <div class="my-4 d-flex flex-column  justify-content-start">
+                    <div class="form-check rounded-3 me-2 p-1 ps-0">
+                        <label style="color:#7e7d80;" class="form-check-label me-1" for="flexRadioDefault1">
+                            سیستمی
+                        </label>
+                        <input class="form-check-input me-2 ms-1" type="checkbox" id="flexRadioDefault1">
+                    </div>
+                    <div class="form-check rounded-3 me-2 p-1 ps-0">
+                        <label style="color:#7e7d80;" class="form-check-label me-1" for="flexRadioDefault2">
+                            چارتر
+                        </label>
+                        <input class="form-check-input me-2 ms-1" type="checkbox" id="flexRadioDefault2">
+                    </div>
+                </div>
+
+            </div>
+            <hr>
+            <div class="my-2 mx-3">
+                شرکت های هواپیمایی
+                <div class="my-4 d-flex flex-column  justify-content-start">
+                    <div class="form-check rounded-3 me-2 p-1 ps-0">
+                        <label style="color:#7e7d80;" class="form-check-label me-1" for="iranair">
+                            <img src="{% static 'icons/IR.png' %}" class="me-1" height="25" width="25" alt="">
+                            ایران ایر
+                        </label>
+                        <input class="form-check-input me-2 ms-1" type="checkbox" id="iranair">
+                    </div>
+                    <div class="form-check rounded-3 me-2 p-1 ps-0">
+                        <label style="color:#7e7d80;" class="form-check-label me-1" for="caspian">
+                            <img src="{% static 'icons/IV.png' %}" class="me-1" height="25" width="25" alt="">
+                            کاسپین
+                        </label>
+                        <input class="form-check-input me-2 ms-1" type="checkbox" id="caspian">
+                    </div>
+                    <div class="form-check rounded-3 me-2 p-1 ps-0">
+                        <label style="color:#7e7d80;" class="form-check-label me-1" for="ata">
+                            <img src="{% static 'icons/I3.png' %}" class="me-1" height="25" width="25" alt="">
+                            آتا
+                        </label>
+                        <input class="form-check-input me-2 ms-1" type="checkbox" id="ata">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--            <div style="height: 58px; border-radius: 10px; box-shadow: 0 0 10px lightgray;"-->
+        <!--                 class="mb-3 fly-day bg-white d-flex align-items-center justify-content-center">-->
+        <!--                <button class="btn h-100">-->
+        <!--                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"-->
+        <!--                         class="bi bi-chevron-right" viewBox="0 0 16 16">-->
+        <!--                        <path fill-rule="evenodd"-->
+        <!--                              d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>-->
+        <!--                    </svg>-->
+        <!--                </button>-->
+        <!--                <div class="d-flex days-div align-items-center justify-content-center" style="height: inherit;">-->
+        <!--                    <a href="" style="color: #9c33d1;">-->
+        <!--                        <span class="px-2" style="border-left: 1px dotted #836691;">-->
+        <!--                            <span>شنبه</span>-->
+        <!--                            <span>01/01</span>-->
+        <!--                        </span>-->
+        <!--                    </a>-->
+        <!--                    <a href="" style="color: #9c33d1;">-->
+        <!--                        <span class="px-2" style="border-left: 1px dotted #836691;">-->
+        <!--                            <span>یکشنبه</span>-->
+        <!--                            <span>01/02</span>-->
+        <!--                        </span>-->
+        <!--                    </a>-->
+        <!--                    <a href="" style="color: #9c33d1;">-->
+        <!--                        <span class="px-2" style="border-left: 1px dotted #836691;">-->
+        <!--                            <span>دوشنبه</span>-->
+        <!--                            <span>01/03</span>-->
+        <!--                        </span>-->
+        <!--                    </a>-->
+        <!--                    <a href="" style="color: #9c33d1;">-->
+        <!--                        <span class="px-2" style="border-left: 1px dotted #836691;">-->
+        <!--                            <span>سه‌شنبه</span>-->
+        <!--                            <span>01/04</span>-->
+        <!--                        </span>-->
+        <!--                    </a>-->
+        <!--                    <a href="" style="color: #9c33d1;">-->
+        <!--                        <span class="px-2" style="border-left: 1px dotted #836691;">-->
+        <!--                            <span>چهارشنبه</span>-->
+        <!--                            <span>01/05</span>-->
+        <!--                        </span>-->
+        <!--                    </a>-->
+        <!--                    <a href="" style="color: #9c33d1;">-->
+        <!--                        <span class="px-2" style="border-left: 1px dotted #836691;">-->
+        <!--                            <span>پنج‌شنبه</span>-->
+        <!--                            <span>01/06</span>-->
+        <!--                        </span>-->
+        <!--                    </a>-->
+        <!--                    <a href="" style="color: #9c33d1;">-->
+        <!--                        <span class="px-2" style="border-left: 1px dotted #836691;">-->
+        <!--                            <span>جمعه</span>-->
+        <!--                            <span>01/07</span>-->
+        <!--                        </span>-->
+        <!--                    </a>-->
+        <!--                </div>-->
+        <!--                <button class="btn h-100">-->
+        <!--                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"-->
+        <!--                         class="bi bi-chevron-left" viewBox="0 0 16 16">-->
+        <!--                        <path fill-rule="evenodd"-->
+        <!--                              d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>-->
+        <!--                    </svg>-->
+        <!--                </button>-->
+        <!--            </div>-->
+        {% for trip in trip_list %}
+
+
+        <section data-airline="{{ trip.airline_id }}" data-time="{{ trip.DepartureTime }}"
+                 style="border-radius: 10px; box-shadow: 0 0 10px lightgray;"
+                 class="my-3 p-2 ticket d-flex bg-white justify-content-center align-items-center">
+            <div class="col-9 d-flex flex-column">
+                <div class="d-flex justify-content-start align-items-center">
+                    <div class="d-flex ticket-img mx-5 flex-column text-center align-items-center justify-content-center">
+                        <img src="{{ trip.image }}" height="35" width="35" alt="">
+                        <div class="mt-2" style="font-size: 12px;">{{ trip.airline_name }}</div>
+                    </div>
+                    <div class="d-flex flex-column justify-content-center align-items-start">
+                        <div class="mb-3 mt-2">
+                                    <span class="mx-1 p-1 rounded-pill"
+                                          style="background-color: #F8FAFB; font-size: 12px;">سیستمی</span>
+                            <span class="mx-1 p-1 rounded-pill"
+                                  style="background-color: #F8FAFB; font-size: 12px;">اکونومی</span>
+                            <span class="mx-1 p-1 rounded-pill"
+                                  style="background-color: #F8FAFB; font-size: 12px;">Boeing 737</span>
+                        </div>
+                        <div class="d-flex my-3 justify-content-start align-items-center">
+                            <div class="d-flex mx-3">
+                                <h5 name="origin" class="me-2">{{ trip.origin_city_name }}</h5>
+                                <h4 class="fw-bold">{{ trip.DepartureTime }}</h4>
+                            </div>
+                            <div class="d-flex time-design align-items-center">
+                                <div style="color: #BEC6CC;"> +----------------o</div>
+                            </div>
+                            <div style="display: none;" class="time-design-mobile align-items-center">
+                                <div style="color: #BEC6CC;"> --></div>
+                            </div>
+                            <div class="d-flex mx-3">
+                                <h5 name="Destination" class="me-2">{{ trip.destination_city_name }}</h5>
+                                <h4 name="ArrivalTime" class="fw-bold">{{ trip.ArrivalTime }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <a data-bs-toggle="modal" data-bs-target="#extraditionRules" class="mx-3" href=""
+                       style="font-size: 12px;">قوانین استرداد</a>
+                </div>
+            </div>
+            <div class="col-3 px-4 d-flex flex-column align-items-center justify-content-center ticket-price"
+                 style="height: inherit; border-right: 1px dotted #9c33d1;">
+                <div class="d-flex mb-2 text-primary">
+                    <h4 class="fw-bold">{{ trip.AdultTotalPrices }}</h4>
+                    <small class="ms-2 mt-1">ریال</small>
+                </div>
+                <form action="{% url " passengers:passenger
+                " %}" style="display: none">
+                <input type="hidden" name="AdultTotalPrices" value="{{ trip.AdultTotalPrices }}">
+                <input type="hidden" name="ArrivalTime" value="{{ trip.ArrivalTime }}">
+                <input type="hidden" name="Destination" value="{{ trip.Destination }}">
+                <input type="hidden" name="DepartureTime" value="{{ trip.DepartureTime }}">
+                <input type="hidden" name="Origin" value="{{ trip.Origin }}">
+                <input type="hidden" name="Origin" value="{{ trip.Origin }}">
+                <input type="hidden" name="airline_name" value="{{ trip.airline_name }}">
+                <input type="hidden" name="persian_date" value="{{ trip.persian_date }}">
+                <input type="hidden" name="destination_city_name" value="{{ trip.destination_city_name }}">
+                <input type="hidden" name="origin_city_name" value="{{ trip.origin_city_name }}">
+                <button type="submit" id="formSubmit_{{ forloop.counter }}"></button>
+                </form>
+                <button type="button" onclick="parsaSubmit({{ forloop.counter }})" style="border-radius: 7px;"
+                        class="btn w-100 btn-primary">
+                    خرید بلیط
+                </button>
+                <small class="mt-2 text-danger">{{ trip.ClassesStatus }}</small>
+            </div>
+        </section>
+        {% endfor %}
+    </section>
+
+</main>
+
+<div class="modal fade" id="extraditionRules" tabindex="-1" aria-labelledby="extraditionRulesLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="extraditionRulesLabel">قوانین استرداد</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex my-3">
+                    <h5 class="text-danger me-3 fw-bold">30%</h5>
+                    <div>از زمان صدور بلیط تا 12:00 ظهر 3 روز قبل از پرواز</div>
+                </div>
+                <div class="d-flex my-3">
+                    <h5 class="text-danger me-3 fw-bold">40%</h5>
+                    <div>از 12:00 ظهر 3 روز قبل از پرواز تا 12:00 ظهر 1 روز قبل از پرواز</div>
+                </div>
+                <div class="d-flex my-3">
+                    <h5 class="text-danger me-3 fw-bold">50%</h5>
+                    <div>از 12:00 ظهر 1 روز قبل از پرواز تا 5 ساعت قبل از پرواز</div>
+                </div>
+                <div class="d-flex my-3">
+                    <h5 class="text-danger me-3 fw-bold">60%</h5>
+                    <div>از 5 ساعت قبل از پرواز به بعد</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--    -->
+<form method="post" action="">
+    {% csrf_token %}
+    <div class="modal d-block visible" id="discountModal" tabindex="-1" aria-labelledby="discountModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="discountModalLabel">اعمال تخفیف</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body mx-2">
+                    <div class="modalInputGP rounded-3 mx-1 my-4 col-12 p-2">
+
+
+                        <div class="d-flex justify-content-around align-items-center mx-auto col-12 position-relative">
+
+                            <div class="form-check rounded-3 mx-2 p-1">
+                                <label style="color:#A281B0;" class="form-check-label me-1" for="useDiscount">
+                                    کد تخفیف
+                                </label>
+                                <input class="form-check-input mx-2" type="radio" name="radioDiscount"
+                                       id="useDiscount" value="useDiscount">
+                                <input type="text" class="form-control mx-2" id="codeDiscount" name="codeDiscount"
+                                       placeholder="کد تخفیف">
+                            </div>
+
+                            <div class="form-check rounded-3 mx-2 p-1">
+                                <label style="color:#A281B0;" class="form-check-label me-1" for="consumerDiscount">
+                                    مشتری هستم
+                                </label>
+                                <input class="form-check-input mx-2" type="radio" name="radioDiscount"
+                                       id="consumerDiscount" checked="" value="consumerDiscount">
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn" style="background-color: #852193; color: white;">ثبت تخفیف
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<style>
+    #codeDiscount {
+        display: none;
+        position: relative;
+        top: 10px;
+        left: 2.5%;
+        width: 95%;
+    }
+
+    #useDiscount:checked + input {
+        display: block;
+    }
+
+
+</style>
+
+<!---->
+
+
+<script>
+    function parsaSubmit(counter) {
+        document.getElementById('formSubmit_' + counter.toString()).click();
+    }
+
+
+    function showDialogDiscount() {
+        let discountModal = document.getElementById('discountModal')
+        discountModal.classList.add('show')
+        discountModal.classList.remove('fade')
+        document.body.classList.add('modal-open')
+    }
+
+    showDialogDiscount()
+
+</script>
+
+{% endblock %}

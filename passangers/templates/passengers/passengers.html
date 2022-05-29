@@ -1,0 +1,185 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static "css/passengers.css" %}">
+    <link rel="stylesheet" href="{% static "css/common.css" %}">
+    <link rel="stylesheet" href="{% static "css/bootstrap.rtl.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/animate.css" %}">
+    <link rel="stylesheet" href="{% static "css/owl.carousel.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/persian-datepicker.min.css" %}">
+    <title>پرواز</title>
+{% endblock style %}
+
+{% block content %}
+    <main class="d-flex py-3 flex-column justify-content-start align-items-start">
+        <section class="col-12">
+            <div style="height: 70px; background-color: lightgray;" class="progressContainer mb-4">
+                <div class="progressBar">
+                    <div class="percent"></div>
+                </div>
+                <div class="steps">
+                    <div class="step step1 finished" id="0"></div>
+                    <div class="step step2 completed" id="1"></div>
+                    <div class="step step3" id="2"></div>
+                    <div class="step step4" id="3"></div>
+                    <div class="step step5" id="4"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="results col-12">
+            <section style="border-radius: 10px; box-shadow: 0 0 10px lightgray;"
+                     class="my-3 p-2 py-4 ticket d-flex bg-white justify-content-center align-items-center">
+                <div class="col-9 d-flex flex-column">
+                    <h6 class="fw-bold ms-3">شنبه، 1 فروردین</h6>
+                    <div class="d-flex justify-content-start align-items-center">
+                        <div class="d-flex mx-5 ticket-img flex-column text-center align-items-center justify-content-center">
+                            <img src="{{ air_line.logo.url }}" height="35" width="35" alt="">
+                            <div class="mt-2" style="font-size: 12px;">{{ info.airline_name }}</div>
+                        </div>
+                        <div class="d-flex flex-column justify-content-center align-items-start">
+                            <div class="mb-3 mt-2">
+                                <span class="mx-1 p-1 rounded-pill" style="background-color: #F8FAFB; font-size: 12px;">سیستمی</span>
+                                <span class="mx-1 p-1 rounded-pill" style="background-color: #F8FAFB; font-size: 12px;">اکونومی</span>
+                                <span class="mx-1 p-1 rounded-pill" style="background-color: #F8FAFB; font-size: 12px;">Boeing 737</span>
+                            </div>
+                            <div class="d-flex my-3 justify-content-start align-items-center">
+                                <div class="d-flex mx-3">
+                                    <h5 class="me-2">{{ info.origin }}</h5>
+                                    <h4 class="fw-bold">{{ info.DepartureTime }}</h4>
+                                </div>
+                                <div class="d-flex time-design align-items-center">
+                                    <div style="color: #BEC6CC;"> +----------------o</div>
+                                </div>
+                                <div style="display: none;" class="time-design-mobile align-items-center">
+                                    <div style="color: #BEC6CC;"> --></div>
+                                </div>
+                                <div class="d-flex mx-3">
+                                    <h5 class="me-2">{{ info.destination }}</h5>
+                                    <h4 class="fw-bold">{{ info.ArrivalTime }}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 px-4 d-flex flex-column align-items-center justify-content-center ticket-price"
+                     style="height: inherit; border-right: 1px dotted #9c33d1;">
+                    <input class="btn mb-3 w-100 btn-outline-primary"
+                           action="action"
+                           onclick="window.history.go(-1); return false;"
+                           type="submit"
+                           value="تغییر بلیط"
+                    />
+                    <div class="d-flex ticket-sum mt-3 w-100 text-primary flex-column">
+                        <div class="d-flex w-100 justify-content-between align-items-center">
+
+                            <div>بزرگ سال:{{ passenger_info.adult }}</div>
+                            <div>کودک:{{ passenger_info.child }}</div>
+                            <div>نوزاد:{{ passenger_info.infant }}</div>
+                        </div>
+                        <hr>
+                        <div class="d-flex w-100 justify-content-between align-items-center">
+                            <div>مجموع</div>
+                            <div>7,600,000
+                                <small>ریال</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section class="information mb-3 p-4 col-12">
+            <div class="d-flex align-items-start">
+                <svg class="bi bi-people-fill" fill="currentColor" height="30" viewBox="0 0 16 16"
+                     width="30" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                    <path d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"
+                          fill-rule="evenodd"/>
+                    <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                </svg>
+                <h4 class="ms-2 mt-1 fw-bold">مشخصات مسافران</h4>
+            </div>
+            <div id="passengers">
+                <form class="passenger_wrapper">
+                    <div class="my-4 d-flex justify-content-start">
+                        <div class="form-check rounded-3 me-2 p-1 ps-0">
+                            <label class="form-check-label me-1" for="flexRadioDefault1">
+                                کارت ملی
+                            </label>
+                            <input checked class="form-check-input me-2 ms-1"
+                                   id="flexRadioDefault1"
+                                   name="idcard" style="height: 20px!important;width: 20px!important;" type="radio"
+                                   value="nationalCard">
+                        </div>
+                        <div class="form-check rounded-3 me-2 p-1 ps-0">
+                            <label class="form-check-label me-1" for="flexRadioDefault2">
+                                پاسپورت
+                            </label>
+                            <input class="form-check-input me-2 ms-1" id="flexRadioDefault2"
+                                   name="idcard"
+                                   style="height: 20px!important;width: 20px!important;" type="radio"
+                                   value="passport">
+                        </div>
+                    </div>
+                    <div class="d-flex w-100 justify-content-between align-items-center">
+                        <input class="form-control mx-2" name="latinName[]" placeholder="نام لاتین" type="text">
+                        <input class="form-control mx-2" name="latinFamilyName[]" placeholder="نام خانوادگی لاتین"
+                               type="text">
+                        <select aria-label="Default select example" class="form-select mx-2" name="gender">
+                            <option selected>جنسیت</option>
+                            <option value="1">مرد</option>
+                            <option value="2">زن</option>
+                        </select>
+                        <input class="form-control id-code ms-2" name="nationalCode" placeholder="کد ملی" type="text">
+                    </div>
+                    <div class="d-flex w-100 justify-content-between align-items-center">
+                        <input class="form-control mx-2" name="name[]" placeholder="نام" type="text">
+                        <input class="form-control mx-2" name="familyName[]" placeholder="نام خانوادگی" type="text">
+                        <div class="input-group birth-date rounded-3 w-50 ms-2">
+                            <input class="birthdate form-control">
+                        </div>
+                    </div>
+
+                </form>
+                <hr>
+            </div>
+            <button class="btn btn-outline-primary" id="addNewPassenger" type="button">افزودن مسافر جدید</button>
+        </section>
+
+
+        <section class="email-send mb-3 d-flex justify-content-between align-items-center col-12 p-4">
+            <div class="form-check rounded-3 me-2 p-1 ps-0">
+                <label class="form-check-label fs-5 me-1" for="emailsend">
+                    ارسال بلیط به ایمیل و شماره همراه دیگر
+                </label>
+                <input class="form-check-input me-2 ms-1" type="checkbox" id="emailsend">
+            </div>
+            <div class="d-flex">
+                <input style="height: 50px;" id="email" class="form-control me-2" placeholder="Email" type="email">
+                <div style="height: 50px;" class="input-group ms-2">
+                    <input id="mobile" type="text" class="form-control" placeholder="تلفن همراه" aria-label="Username"
+                           aria-describedby="basic-addon1">
+                    <span class="input-group-text bg-white">98+</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="rules-submit mb-3 col-12 p-4 d-flex justify-content-between align-items-center">
+            <div>با کلیک روی تایید و ادامه خرید با قوانین سایت و قوانین پرواز موافقت کرده‌اید.</div>
+            <div class="d-flex justify-content-center align-items-end">
+                <div class="text-primary me-2 d-flex align-items-center">
+                    <h4 class="fw-bold">
+                        7,600,000
+                    </h4>
+                    <small class="ms-1">ریال</small>
+                </div>
+                {% csrf_token %}
+
+                <button data-url="{% url 'passengers:passenger' %}" id="finalSubmit"
+                        class="btn ms-2 fw-bold btn-primary">تایید و ادامه خرید
+                </button>
+            </div>
+        </section>
+    </main>
+{% endblock content %}
