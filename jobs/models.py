@@ -8,7 +8,7 @@ class Category(models.Model):
 
 
 class Job(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='jobs')
     title = models.CharField(max_length=1255)
     description = models.TextField()
     available = models.BooleanField(default=True)
@@ -23,6 +23,7 @@ class Apply(models.Model):
     cv = models.FileField(upload_to='')
     phone_number = models.CharField(max_length=11)
     cover_letter = models.CharField(max_length=125)
+    job = models.ForeignKey(Job, on_delete=models.CASCADE, related_name='apply', null=True, blank=True)
 
     def __str__(self):
         return self.full_name

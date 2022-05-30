@@ -1,0 +1,505 @@
+/*=====main======*/
+main>h4{
+  width: 80%;
+  margin: auto;
+}
+sign-in-section{
+  width: 50%;
+}
+.signin-details{
+  width: 50%;
+  border-right: 1px dotted #91659D;
+}
+.sign-in{
+  background-color: white;
+  width: 90%;
+  margin: auto;
+  border-radius: 5px;
+  border: 1px dotted #b9acbd;
+}
+.sign-in>div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.signin-details ul>li{
+    color: #91659D;
+    background-color: #E1E1E1;
+    padding:10px;
+    border-radius: 5px;
+}
+.inputGP{
+  height: 50px;
+  width: 500px !important;
+}
+.inputGPText{
+  width: 120px;
+}
+.btnGP .btn{
+  width: 180px !important;
+  transition: 0.5s;
+}
+.btnGP .btn:hover{
+  border-bottom: 5px solid #53155C;
+}
+
+.icon-features{
+  width: 50%;  
+}
+.double-feature{
+  width: 100%;
+}
+.single-feature{
+  width: 50%;
+  text-align: center;
+}
+.expand-feature{
+  background-color: #DDDDDD;
+}
+.worldmap-feature{
+  width: 50%;
+}
+.worldmap-feature img{
+  width: 400px;
+  height: 220px;
+}
+.features{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.input-group input{
+  background-color: #F1F1F1;
+}
+
+.video-section{
+  position: relative;
+  height: 80vh !important;
+}
+#videoBG{
+  height: auto;
+  width: 100%;
+}
+.video-section{
+  position: relative;
+}
+.video-sec{
+  height: 600px;
+  overflow-y: hidden;
+}
+.video-bottom{
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.video-top{
+  position: absolute;
+  width: 100%;
+  top: 0;
+  transform: rotate(180deg);
+}
+.video-sec video{
+  width: 100% !important;
+  height: inherit;
+}
+.tour-content{
+  position: absolute;
+  bottom: 0%;
+  background: rgba(0,0,0,0.7) ;
+  width: 100%;
+}
+.sec-bi-quote{
+    color: #FFA500;
+}
+.first-bi-quote{
+    transform: rotate(180deg);
+    color: #FFA500;
+}
+.cards{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.single-card{
+  width: 28%;
+}
+.tour-explain{
+  width: 90%;
+  margin: auto;
+}
+.tour-references{
+  width: 80%;
+  margin: auto;
+}
+
+@media (max-width: 575.98px) {
+  .video-section{
+    height: 310px !important;
+  }
+  .tour-content *{
+    font-size: 12px !important;
+  }
+  .tour-content .d-flex.ms-5{
+    margin: 0 10px !important;
+  }
+  .tour-content{
+    background-color: black;
+  }
+  .tour-explain>h4{
+    font-size: 14px !important;
+    line-height: 20px;
+  }
+  .sec-bi-quote,.first-bi-quote{
+    width: 16px;
+    height: 16px;
+  }
+  .single-card{
+    width: 150px !important;
+  }
+  .single-card *{
+    font-size: 14px !important;
+  }
+  svg.text-warning{
+    width: 20px !important;
+    height: 20px !important;
+  }
+  .tour-references *{
+    font-size: 16px !important;
+  }
+  .modal *{
+    font-size: 12px !important;
+  }
+  sign-in-section{
+    width: 100%;
+  }
+  .signin-details{
+    width: 100%;
+    border-right: 1px dotted #91659D;
+  }
+  .sign-in>div{
+    display: flex;
+    flex-direction: column;
+  }
+  .icon-features.px-5{ 
+    width: 100%;
+    padding-left:10px !important ;
+    padding-right:10px !important ;
+    border-left: 0px !important;
+    margin-bottom: 40px;
+  }
+  .single-feature.d-flex{
+    justify-content: flex-start !important;
+  }
+  .icon-features img{
+    width: 70px;
+    height: 50px;
+  }
+  .expand-feature>p{
+    text-align: center;
+  }
+  .worldmap-feature{
+    width: 100%;
+  }
+  .features.px-5{
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left:0px !important ;
+    padding-right:0px !important ;
+  }
+  .worldmap-feature>img{
+    width: 100%;
+    height: 180px;
+  }
+  .inputGP{
+    width: 100% !important;
+    max-width: 250px;
+  }
+  .input-group-text>svg{
+    display: none;
+  }
+  .inputGP>input{
+    width: 70% !important;
+  }
+  .sign-in-section.px-5{
+    padding: 0 !important;
+  }
+  .inputGPText{
+    width: 30%;
+    font-size: 12px !important;
+  }
+  .btnGP .btn{
+    width: 200px !important;
+    transition: 0.5s;
+    font-size: 10px !important;
+    margin-bottom: 10px;
+  }
+  .btnGP>div{
+    flex-direction: column;
+  }
+  .signin-details.px-5{
+    padding: 10px !important;
+  }
+  .signin-details *{
+    font-size: calc(100% - 1px)
+  }
+  .signin-details img{
+    width: 16px !important;
+    height: 16px !important;
+  }
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .video-section{
+    height: 400px !important;
+  }
+  .tour-content *{
+    font-size: 12px !important;
+  }
+  .tour-content .d-flex.ms-5{
+    margin: 0 10px !important;
+  }
+  .tour-content{
+    background-color: black;
+  }
+  .tour-explain>h4{
+    font-size: 14px !important;
+    line-height: 20px;
+  }
+  .sec-bi-quote,.first-bi-quote{
+    width: 16px;
+    height: 16px;
+  }
+  .single-card{
+    width: 150px !important;
+    margin-left: 20px !important;
+  }
+  .single-card *{
+    font-size: 14px !important;
+  }
+  svg.text-warning{
+    width: 20px !important;
+    height: 20px !important;
+  }
+  .tour-references *{
+    font-size: 16px !important;
+  }
+  sign-in-section{
+    width: 100%;
+  }
+  .signin-details{
+    width: 100%;
+    border-right: 1px dotted #91659D;
+  }
+  .sign-in>div{
+    display: flex;
+    flex-direction: column;
+  }
+  .icon-features.px-5{ 
+    width: 80%;
+    padding-left:10px !important ;
+    padding-right:10px !important ;
+    border-left: 0px !important;
+    margin-bottom: 40px !important;
+    margin: auto ;
+  }
+  .single-feature.d-flex{
+    justify-content: flex-start !important;
+  }
+  .icon-features img{
+    width: 70px;
+    height: 50px;
+  }
+  .expand-feature>p{
+    text-align: center;
+  }
+  .worldmap-feature{
+    width: 100%;
+  }
+  .features.px-5{
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left:0px !important ;
+    padding-right:0px !important ;
+  }
+  .worldmap-feature>img{
+    width: 100%;
+    height: 180px;
+  }
+  .inputGP{
+    width: 100% !important;
+  }
+  .sign-in-section.px-5{
+    padding: 0 !important;
+  }
+
+  .signin-details.px-5{
+    padding: 10px !important;
+  }
+  .signin-details *{
+    font-size: calc(100% - 1px)
+  }
+  .signin-details img{
+    width: 16px !important;
+    height: 16px !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .tour-explain>h4{
+    font-size: 14px !important;
+    line-height: 20px;
+  }
+  .sec-bi-quote,.first-bi-quote{
+    width: 16px;
+    height: 16px;
+  }
+  .single-card{
+    margin-left: 20px !important;
+  }
+  .single-card *{
+    font-size: 14px !important;
+  }
+  svg.text-warning{
+    width: 20px !important;
+    height: 20px !important;
+  }
+  .tour-references *{
+    font-size: 16px !important;
+  }
+  sign-in-section{
+    width: 100%;
+  }
+  .signin-details{
+    width: 100%;
+    border-right: 1px dotted #91659D;
+  }
+  .sign-in>div{
+    display: flex;
+    flex-direction: column;
+  }
+  .icon-features.px-5{ 
+    width: 80%;
+    padding-left:10px !important ;
+    padding-right:10px !important ;
+    border-left: 0px !important;
+    margin-bottom: 40px !important;
+    margin: auto ;
+  }
+  .single-feature.d-flex{
+    justify-content: flex-start !important;
+  }
+  .icon-features img{
+    width: 70px;
+    height: 50px;
+  }
+  .expand-feature>p{
+    text-align: center;
+  }
+  .worldmap-feature{
+    width: 100%;
+  }
+  .features.px-5{
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left:0px !important ;
+    padding-right:0px !important ;
+  }
+  .worldmap-feature>img{
+    width: 100%;
+    height: 180px;
+  }
+  .inputGP{
+    width: 100% !important;
+  }
+  .sign-in-section.px-5{
+    padding: 0 !important;
+  }
+
+  .signin-details.px-5{
+    padding: 10px !important;
+  }
+  .signin-details *{
+    font-size: calc(100% - 1px)
+  }
+  .signin-details img{
+    width: 16px !important;
+    height: 16px !important;
+  }
+}
+@media (min-width: 992px) and (max-width: 1023.98px) {
+  .video-section{
+    height: 400px !important;
+  }
+  .video-sec{
+    height: inherit;
+  }
+  .tour-content *{
+    font-size: 12px !important;
+  }
+  .tour-content .d-flex.ms-5{
+    margin: 0 10px !important;
+  }
+  .tour-content{
+    background-color: black;
+  }
+  .tour-explain>h4{
+    font-size: 14px !important;
+    line-height: 20px;
+  }
+  .sec-bi-quote,.first-bi-quote{
+    width: 16px;
+    height: 16px;
+  }
+  .single-card{
+    margin-left: 20px !important;
+  }
+  .single-card *{
+    font-size: 14px !important;
+  }
+  svg.text-warning{
+    width: 20px !important;
+    height: 20px !important;
+  }
+  .tour-references *{
+    font-size: 16px !important;
+  }
+  sign-in-section{
+    width: 50%;
+  }
+  .signin-details{
+    width: 50%;
+    border-right: 1px dotted #91659D;
+  }
+}
+.video-sec{
+  height: inherit;
+}
+@media (min-width: 1024px) and (max-width: 1299.98px) {
+  .video-section{
+    height: 400px !important;
+  }
+  .video-sec{
+    height: inherit;
+  }
+
+  .tour-explain>h4{
+    line-height: 20px;
+  }
+  .sec-bi-quote,.first-bi-quote{
+    width: 16px;
+    height: 16px;
+  }
+  .single-card{
+    margin-left: 20px !important;
+  }
+
+  svg.text-warning{
+    width: 20px !important;
+    height: 20px !important;
+  }
+}
+@media (min-width: 1300px) and (max-width: 1599.98px) {}
+@media (min-width: 1600px) and (max-width: 1999.98px) {}
+@media (min-width: 2000px){}

@@ -1,0 +1,438 @@
+main{
+    width: 80%;
+    margin: auto;
+    min-height: 100vh;
+}
+
+input[type="range"]{
+  -webkit-appearance: none;
+  width: 100%;
+  height: 7px;
+  outline: none !important;
+  appearance:none;
+  border:none;
+  border-radius:30px;
+  background-color: #6C1B78;
+}
+input[type="range"]::-moz-focus-outer {
+    border: 0;
+}
+input[type="range"]:hover {
+  outline:none;
+}
+
+/* Chrome */
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: #92539c;
+  cursor: pointer;
+  border-radius:30px;
+  outline:none;
+  transform: scale(1.8);
+}
+
+/* Moz */
+
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  background: #f1f9f4;
+  cursor: pointer;
+  border-radius:50%;
+  border:none;
+  outline:none;
+}
+input[type="range"]::-moz-range-progress {
+  background-color: #fff;
+    height: 100%;
+  border-radius:30px;
+  border:none;
+}
+input[type="range"]::-moz-range-track {  
+  background-color: #ccc;
+  border-radius:30px;
+  border:none;
+    height: 100%;
+}
+
+/* IE*/
+
+input[type="range"]::-ms-fill-lower {
+  background-color: #fff;
+    height: 100%;
+  border-radius:30px;
+  border:none;
+}
+input[type="range"]::-ms-fill-upper {  
+  background-color: #ccc;
+  border-radius:30px;
+  border:none;
+    height: 100%;
+}
+
+/* Tooltip style */
+.Tooltip {
+  position:relative;
+  padding:30px 0 0 0;
+  
+}
+.Tooltip .Tooltiptext {
+  visibility: hidden;
+  width: 100px;
+  background-color: #132E54;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  font-size: 12px;
+  border-radius: 3px;
+  position: absolute;
+  z-index: 1;
+  top:-10px;
+  left:calc(20% - 45px);
+}
+
+.Tooltip:hover .Tooltiptext {
+  visibility: visible;
+}
+
+.Tooltip .Tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #132E54 transparent transparent transparent;
+}
+.results-filter{
+    background-color: white;
+    border: 1px dotted #92539c;
+    z-index: 2;
+}
+.results{
+    z-index: 2;
+}
+.sideNav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  background-color: white;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sideNav a {
+  padding: 15px 0px 15px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sideNav a:hover {
+  color: #f1f1f1;
+}
+
+.sideNav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  font-size: 40px;
+  font-weight: bold;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+  
+@media (max-width: 378.98px) {
+  .ticket>.col-9>div.justify-content-start{
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 575.98px) {
+  main{
+    width: 100%;
+  }
+  .results *{
+    font-size: 10px !important;
+  }
+  .results.col-9{
+    width: 100% !important;
+    padding: 10px !important;
+    margin-right: 0 !important;
+  }
+  .days-div{
+    width: 100% !important;
+  }
+  .fly-day{
+    max-width: 100% !important;
+    margin-top: 20px !important;
+  }
+  .closebtn{
+    font-size: 16px !important;
+  }
+  .filterBtn{
+    display: inline !important;
+  }
+  .sideNav{
+    padding-top: 40px !important;
+    z-index: 990104999 !important;
+  }
+  .days-div>a>span{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .fly-day button{
+    padding: 0 !important;
+  }
+  .fly-day button>svg{
+    width: 12px !important;
+    height: 12px !important;
+  }
+  .ticket>.col-9>div.justify-content-start{
+    justify-content: space-evenly !important;
+  }
+  .ticket>.col-9{
+    width:70% !important;
+  }
+  .ticket>.col-3{
+    width: 30% !important;
+  }
+  .time-design-mobile{
+    display: inline-block !important;
+  }
+  .time-design.d-flex{
+    display: none !important;
+  }
+  .ticket-img.mx-5{
+    margin: 0px !important;
+  }
+  .ticket-price *{
+    font-size: 12px !important;
+  }
+  .ticket-price>div>.mt-1{
+    margin: 0 5px 0 0 !important;
+  }
+  .ticket-price>div>.fw-bold{
+    margin: 3px 0 0 0 !important;
+  }
+  .ticket-price>a.btn, .ticket-price>.text-danger{
+    font-size: 10px !important;
+  }
+  .results-filter{
+    display: none;
+  }
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+  main{
+    width: 100%;
+  }
+  .results-filter{
+    display: none;
+  }
+  .results.col-9{
+    width: 100% !important;
+    padding: 10px !important;
+    margin-right: 0 !important;
+  }
+  .days-div{
+    width: 100% !important;
+  }
+  .fly-day{
+    max-width: 80% !important;
+    margin-top: 20px !important;
+    margin: auto;
+  }
+  .closebtn{
+    font-size: 16px !important;
+  }
+  .filterBtn{
+    display: inline !important;
+  }
+  .sideNav{
+    padding-top: 40px !important;
+    z-index: 990104999 !important;
+  }
+  .days-div>a>span{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .fly-day button{
+    padding: 0 !important;
+  }
+  .fly-day button>svg{
+    width: 12px !important;
+    height: 12px !important;
+  }
+  .ticket>.col-9>div.justify-content-start{
+    justify-content: space-evenly !important;
+  }
+  .ticket>.col-9{
+    width:70% !important;
+  }
+  .ticket>.col-3{
+    width: 30% !important;
+  }
+  .time-design-mobile{
+    display: inline-block !important;
+  }
+  .time-design.d-flex{
+    display: none !important;
+  }
+  .ticket-img.mx-5{
+    margin: 0px !important;
+  }
+  .ticket-price *{
+    font-size: 12px !important;
+  }
+  .ticket-price>div>.mt-1{
+    margin: 0 5px 0 0 !important;
+  }
+  .ticket-price>div>.fw-bold{
+    margin: 3px 0 0 0 !important;
+  }
+  .ticket-price>a.btn, .ticket-price>.text-danger{
+    font-size: 10px !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  main{
+    width: 100%;
+  }
+  .results-filter{
+    display: none;
+  }
+  .results.col-9{
+    width: 100% !important;
+    padding: 10px !important;
+    margin-right: 0 !important;
+  }
+  .days-div{
+    width: 100% !important;
+  }
+  .fly-day{
+    max-width: 80% !important;
+    margin-top: 20px !important;
+    margin: auto;
+  }
+  .closebtn{
+    font-size: 16px !important;
+  }
+  .filterBtn{
+    display: inline !important;
+  }
+  .sideNav{
+    padding-top: 40px !important;
+    z-index: 990104999 !important;
+  }
+  .days-div>a>span{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .fly-day button{
+    padding: 0 !important;
+  }
+  .fly-day button>svg{
+    width: 12px !important;
+    height: 12px !important;
+  }
+  .ticket>.col-9>div.justify-content-start{
+    justify-content: space-evenly !important;
+  }
+  .ticket>.col-9{
+    width:70% !important;
+  }
+  .ticket>.col-3{
+    width: 30% !important;
+  }
+  .time-design-mobile{
+    display: inline-block !important;
+  }
+  .time-design.d-flex{
+    display: none !important;
+  }
+  .ticket-img.mx-5{
+    margin: 0px !important;
+  }
+
+  .ticket-price>div>.mt-1{
+    margin: 0 5px 0 0 !important;
+  }
+  .ticket-price>div>.fw-bold{
+    margin: 3px 0 0 0 !important;
+  }
+}
+@media (min-width: 992px) and (max-width: 1023.98px) {
+  main{
+    width: 90%;
+  }
+  .days-div{
+    width: 100% !important;
+  }
+  .fly-day{
+    max-width: 80% !important;
+    margin-top: 20px !important;
+    margin: auto;
+  }
+  .days-div *{
+    font-size: 14px !important;
+  }
+  .days-div>a>span{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .fly-day button{
+    padding: 0 !important;
+  }
+
+}
+@media (min-width: 1024px) and (max-width: 1299.98px) {
+  main{
+    width: 90%;
+  }
+  .days-div{
+    width: 100% !important;
+  }
+  .fly-day{
+    max-width: 100% !important;
+    margin-top: 20px !important;
+    margin: auto;
+  }
+  .days-div *{
+    font-size: 14px !important;
+  }
+  .days-div>a>span{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .fly-day button{
+    padding: 0 !important;
+  }
+}
+@media (min-width: 1300px) and (max-width: 1599.98px) {}
+@media (min-width: 1600px) and (max-width: 1999.98px) {}
+@media (min-width: 2000px){}

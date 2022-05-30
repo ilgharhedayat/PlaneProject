@@ -1,0 +1,49 @@
+@font-face {
+    font-family: vazir;
+    src: url(../fonts/Vazir-FD.ttf);
+}
+*{
+    font-family: vazir;
+}
+main{
+    width: 90%;
+    margin: auto;
+}
+.outboard-hotels *{
+  font-family: 'Times New Roman', Times, serif;
+}
+.outhotels, .inhotels{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.outhotel-card, .inhotel-card{
+  width: 22%;
+  margin: 1em;
+  background-color: #E9E9E9;
+  border-radius: 3px;
+  border-bottom: 5px solid rgba(103,34,71,1);
+}
+.card-img{
+  position: relative;
+  width: inherit;
+  height: 150px;
+}
+.card-img>img{
+  width: inherit;
+  height: inherit;
+}
+.card-img>div{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.price *{
+  font-family: vazir;
+}
+.price-text{
+  font-size: 14px;
+}

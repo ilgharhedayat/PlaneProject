@@ -12,6 +12,7 @@ urlpatterns = [
     path("bankgateways/", az_bank_gateways_urls()),
     path('hotels/', include('hotels.urls', namespace='hotel')),
     path('core/', include('core.urls', namespace='core')),
+    path('job/', include('jobs.urls', namespace='job'))
 ]
 
 if settings.DEBUG:
