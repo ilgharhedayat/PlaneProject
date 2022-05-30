@@ -26,7 +26,7 @@ class ContactUsForm(forms.ModelForm):
                     "placeholder": "موضوع",
                 }
             ),
-            "text": forms.Textarea(
+            "text": forms.TextInput(
                 attrs={
                     "class": "form-control",
                     "id": "travelSrc",
