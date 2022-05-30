@@ -9,7 +9,8 @@ from django.urls import reverse
 # Create your views here.
 class CategoryListView(ListView):
     model = Category
-    template_name = ''
+    template_name = 'jobs/list.html'
+    context_object_name = 'category_list'
 
 
 class JobListView(ListView):
@@ -23,7 +24,7 @@ class JobDetailView(FormMixin, DetailView):
     template_name = ''
     slug_field = 'id'
     slug_url_kwarg = 'id'
-    form_class =''
+    form_class = ''
 
     def get_success_url(self):
         return reverse('', kwargs={'id': self.object.id})

@@ -62,7 +62,8 @@
                             {% endfor %}
                         </div>
                         <div class="price p-2 d-flex justify-content-between align-items-center" dir="ltr">
-                            <a href="#" class="btn btn-primary rounded-3">رزرو هتل</a>
+                            <a href="{% url "hotel:rooms" hotel.city_id %}" class="btn btn-primary rounded-3">رزرو
+                                هتل</a>
                             <div class="price-text">
                                 <span>شروع قیمت از </span>
                                 <span>141,022,123</span>

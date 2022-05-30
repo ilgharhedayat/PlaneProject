@@ -116,7 +116,7 @@
                                     <h4 class="fw-bold">{{ trip.AdultTotalPrices }}</h4>
                                     <small class="ms-2 mt-1">ریال</small>
                                 </div>
-                                <form method="post" action="{% url " passengers:passenger" %}
+                                <form method="post" action="{% url "passengers:passenger" %}
                                 " style="display: none">
                                 {% csrf_token %}
                                 <input type="hidden" name="AdultTotalPrices" value="{{ trip.AdultTotalPrices }}">

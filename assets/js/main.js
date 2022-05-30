@@ -55,7 +55,7 @@ $(document).ready(function () {
         $(this).toggleClass('open');
     });
     /* new codes */
-    $(".side-tab .text-body").click(function (event) {
+$(".side-tab .text-body").click(function (event) {
         event.preventDefault();
         let dataTab = $(this).data("tab");
         $(".text-body span").css("background-color", "transparent")
@@ -63,7 +63,7 @@ $(document).ready(function () {
         $(".select-area").addClass("d-none");
         $("." + dataTab).removeClass("d-none");
     })
-    $("#returnDateHotel").persianDatepicker({
+$("#returnDateHotel").persianDatepicker({
         altField: '#returnDateHotel',
         altFormat: "YYYY/MM/DD",
         observer: false,
@@ -72,7 +72,7 @@ $(document).ready(function () {
         initialValueType: 'persian',
         autoClose: true,
     });
-    $("#goDateHotel").persianDatepicker({
+$("#goDateHotel").persianDatepicker({
         altField: '#goDateHotel',
         altFormat: "YYYY/MM/DD",
         observer: false,
@@ -81,7 +81,7 @@ $(document).ready(function () {
         initialValueType: 'persian',
         autoClose: true,
     });
-    $("#hotelSrc").focus(function () {
+$("#hotelSrc").focus(function () {
         fetch('http://localhost/php/plane/cities.json')
             .then(res => res.json())
             .then(data => getDataFromJson(data))
@@ -140,9 +140,9 @@ $(function () {
         if (id) {
             $(`#${id}`).persianDatepicker({
                 altField: `#${id}`,
-                altFormat: "MM/DD",
+                altFormat: "YYYY/MM/DD",
                 observer: false,
-                format: 'MM/DD',
+                format: "YYYY/MM/DD",
                 initialValue: false,
                 initialValueType: 'persian',
                 autoClose: true,
@@ -321,23 +321,40 @@ let typeTravel = 2
 let flexRadioDefault1 = document.getElementById('flexRadioDefault1')
 let flexRadioDefault2 = document.getElementById('flexRadioDefault2')
 
-flexRadioDefault1.addEventListener('change',function (e){
+flexRadioDefault1.addEventListener('change', function (e) {
     typeTravel = 1
     toggletypeTravel(1)
 })
-flexRadioDefault2.addEventListener('change',function (e){
+flexRadioDefault2.addEventListener('change', function (e) {
     typeTravel = 2
     toggletypeTravel(2)
 })
 
-function toggletypeTravel(type){
-    containerTypeTravel.setAttribute('type-travel',type)
+function toggletypeTravel(type) {
+    containerTypeTravel.setAttribute('type-travel', type)
 }
 
 
+$(document).ready(function () {
+    $(".panel-header").click(function () {
+        $(this).next().children(".panel-display").slideToggle();
+    })
+    $("#jobs-scroller").click(function () {
+        $([document.documentElement, document.body]).animate({
+            scrollTop: $(".jobs-list-sec").offset().top
+        }, 1000);
+    })
+})
+
+$("#jobs-scroller").click(function () {
+    $([document.documentElement, document.body]).animate({
+        scrollTop: $(".jobs-list-sec").offset().top
+    }, 1000);
+})
 
 
-
-
-
-
+$(document).ready(function () {
+    $(".panel-header").click(function () {
+        $(this).next().children(".panel-display").slideToggle();
+    })
+})

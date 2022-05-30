@@ -3,7 +3,7 @@ import requests
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import View
 from .models import Airline
-from .utils import city_name
+from .utils import city_name, Persian
 
 
 class SearchListView(View):
@@ -13,9 +13,12 @@ class SearchListView(View):
         airlines_list = Airline.objects.all()
         flight_count = 0
         trip_list_final = []
+        fly_date = request.GET.get('date')
+        print(fly_date)
+        new_fly_date = Persian(fly_date).gregorian_string()
         for airline in airlines_list:
             trips = requests.get(
-                f"http://zv.nirasoftware.com:882/AvailabilityJS.jsp?AirLine={airline.symbol}&cbSource={request.GET.get('source')}&cbTarget={request.GET.get('target')}&cbDay1=_&cbMonth1=_&DepartureDate={'2022-05-29'}&cbAdultQty={request.GET.get('adult', 0)}&cbChil%20dQty={request.GET.get('child', 0)}&cbInfantQty={request.GET.get('infant', 0)}&OfficeUser={airline.username}&OfficePass={airline.password}"
+                f"http://zv.nirasoftware.com:882/AvailabilityJS.jsp?AirLine={airline.symbol}&cbSource={request.GET.get('source')}&cbTarget={request.GET.get('target')}&cbDay1=_&cbMonth1=_&DepartureDate={str(new_fly_date)}&cbAdultQty={request.GET.get('adult', 0)}&cbChil%20dQty={request.GET.get('child', 0)}&cbInfantQty={request.GET.get('infant', 0)}&OfficeUser={airline.username}&OfficePass={airline.password}"
             )
 
             a = json.loads(trips.content)

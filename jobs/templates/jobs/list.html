@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+{% load static %}
+{% block style %}
+
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <link rel="stylesheet" href="{% static "css/common.css" %}">
+    <link rel="stylesheet" href="{% static "css/bootstrap.rtl.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/animate.css" %}">
+    <link rel="stylesheet" href="{% static "css/owl.carousel.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/persian-datepicker.min.css" %}">
+    <title>صفحه اصلی | پرواز</title>
+    <style>
+        .top-jobs {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(https://www.alibaba.ir/_assets/img/hero.37ef904.jpg);
+        }
+
+        .jobs-texts {
+            color: #fff;
+        }
+
+        #jobs-scroller {
+            font-size: 18px;
+        }
+
+        .head-jobs-line::after {
+            content: " ";
+            display: block;
+            background-color: #842192;
+            height: 2px;
+            width: 80%;
+            max-width: 100px;
+            margin: 10px auto;
+        }
+
+        .panel {
+            background-color: #fff;
+            border: 1px solid rgba(186, 191, 199, .3);
+            border-radius: 3px;
+            box-shadow: none;
+            margin-bottom: 0;
+        }
+
+        .panel-header {
+            position: relative;
+            padding: 15px 20px;
+        }
+
+        .panel-header, .panel-header > .collapse-arrow {
+            padding: 15px;
+        }
+
+        .panel-header {
+            border-bottom: 1px solid rgba(186, 191, 199, .3);
+            cursor: pointer;
+        }
+
+        .btn-job {
+            border: 2px solid #842192;
+            border-radius: 5px;
+            color: #842192;
+            transition: 0.5s;
+        }
+
+        .btn-job:hover {
+            background-color: #842192;
+            color: #fff;
+        }
+
+        .job-detail-title {
+            color: #555;
+            font-size: 17px;
+        }
+
+        .job-detail-title:hover {
+            color: #842192;
+        }
+    </style>
+{% endblock style %}
+{% block content %}
+
+    <main>
+        <section class="top-jobs py-5">
+            <div class="container py-4 px-0">
+                <div class="d-flex justify-content-between align-items-center py-4">
+                    <div class="jobs-texts"><h2>خودت را کشف کن!</h2><h5>استخدام در شرکت‌های گروه اپیسوم</h5></div>
+                    <div class="jobs-top-btn">
+                        <button id="jobs-scroller" class="btn btnSearch d-block w-100 py-2">مشاهده فرصت های شغلی
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="jobs-list-sec my-5">
+            <div class="container">
+                <h3 class="text-center head-jobs-line">فرصت های شغلی </h3>
+                <div class="jobs-list">
+                    {% for category in category_list %}
+                        <div class="mb-3 job-list">
+                            <div class="panel collapsed">
+                                <div class="panel-header d-flex align-items-center justify-content-between clickable">
+                                    <div>
+                                        <h4 class="job-title">
+                                            {{ category.title }}
+                                        </h4>
+                                    </div>
+                                    <div class="collapse-arrow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                             fill="currentColor"
+                                             class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                            <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="panel-display" style="display: none;">
+                                        <div class="py-4 px-3">
+                                            {% for job in category.jobs.all %}
+                                                <div class="job-card d-flex align-items-center justify-content-between my-4">
+                                                    <a href="#" class="job-detail-title">
+                                                        {{ job.title }}
+                                                    </a>
+                                                    <a href="#" class="btn-job px-5 py-2">
+                                                        بیشتر
+                                                    </a>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+{% endblock %}
+
+

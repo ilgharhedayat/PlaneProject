@@ -91,12 +91,13 @@ WSGI_APPLICATION = "PlaneProject.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'plane',
-        'USER': 'plane_user',
-        'PASSWORD': 'plane_1234',
-        'HOST': 'localhost',
-        'PORT': 5432,
-    },
+        'NAME': 'mydb', 
+        'USER': 'myuser', 
+        'PASSWORD': '0937maa5733',
+        'HOST': 'localhost', 
+         'PORT': '5432',
+    }
+
 }
 
 # Password validation
