@@ -174,7 +174,27 @@
                     </h4>
                     <small class="ms-1">ریال</small>
                 </div>
-                {% csrf_token %}
+
+                <form action="{% url "passengers:passenger" %}" method="post" style="display: none">
+                    {% csrf_token %}
+                    <input type="hidden" name="date" value="{{ info.date }}">
+                    <input type="hidden" name="source" value="{{ info.origin }}">
+                    <input type="hidden" name="target" value="{{ info.destination }}">
+                    <input type="hidden" name="target" value="{{ trip.DepartureTime }}">
+                    <input type="hidden" name="airline_name" value="{{ info.airline_name }}">
+                    {#                    <input type="hidden" name="Origin" value="{{ trip.Origin }}">#}
+                    {#                    <input type="hidden" name="airline_name" value="{{ trip.airline_name }}">#}
+                    {#                    <input type="hidden" name="persian_date" value="{{ trip.persian_date }}">#}
+                    {#                    <input type="hidden" name="destination_city_name" value="{{ trip.destination_city_name }}">#}
+                    {#                    <input type="hidden" name="origin_city_name" value="{{ trip.origin_city_name }}">#}
+                    <button type="submit" id="formSubmit_{{ forloop.counter }}"
+                            onclick="parsaSubmit({{ forloop.counter }})"></button>
+                </form>
+                {#                <button type="submit"  style="border-radius: 7px;"#}
+                {#                        class="btn w-100 btn-primary">#}
+                {#                    خرید بلیط#}
+                {#                </button>#}
+
 
                 <button data-url="{% url 'passengers:passenger' %}" id="finalSubmit"
                         class="btn ms-2 fw-bold btn-primary">تایید و ادامه خرید
@@ -182,4 +202,21 @@
             </div>
         </section>
     </main>
+
+    <script>
+        function parsaSubmit(counter) {
+            document.getElementById('formSubmit_' + counter.toString()).click();
+        }
+
+
+        function showDialogDiscount() {
+            let discountModal = document.getElementById('discountModal')
+            discountModal.classList.add('show')
+            discountModal.classList.remove('fade')
+            document.body.classList.add('modal-open')
+        }
+
+        showDialogDiscount()
+
+    </script>
 {% endblock content %}

@@ -9,12 +9,12 @@ from django.urls import reverse
 # Create your views here.
 class CategoryListView(ListView):
     model = Category
-    template_name = ''
+    template_name = 'blog/list.html'
 
 
 class ArticleListView(ListView):
     model = Article
-    template_name = ''
+    template_name = 'blog/list.html'
 
 
 class ArticleCategoryView(ListView):

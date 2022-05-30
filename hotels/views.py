@@ -3,7 +3,7 @@ from django.shortcuts import render
 import json
 
 import requests
-
+from airlines.utils import Persian
 from django.views.generic import View
 
 
@@ -36,17 +36,20 @@ class HotelSearchView(View):
 
 
 class HotelRoomsView(View):
-    def get(self, request):
+    def get(self, request, city_id):
+        go = Persian(request.GET.get('go')).gregorian_string()
+        come = Persian(request.GET.get('come')).gregorian_string()
         f = requests.Session()
         headers = {'content-type': 'application/json'}
         my_data = {
-            "availabilityRq": {'hotelsId': [request.GET.get('')]},
-            'form': '2022-5-26',
-            'to': '2022-5-30',
+            "availabilityRq": {'hotelsId': [city_id]},
+            'form': go,
+            'to': come,
         }
         get_data = f.post('https://api.vhotel.ir/api/V4/availability', auth=('admin', "iEol5iBJjFCRKIBA"),
                           data=json.dumps(my_data), timeout=30, headers=headers)
         rooms = json.loads(get_data.content)
+        print('*' * 99)
         print(rooms)
         return render(request, 'hotels/search.html', {'hotels_list': rooms})
 

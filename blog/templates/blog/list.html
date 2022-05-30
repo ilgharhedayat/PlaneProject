@@ -1,0 +1,71 @@
+{% extends  'base.html' %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.rtl.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/persian-datepicker.min.css' %}">
+    <title>صفحه اصلی | پرواز</title>
+    <style>
+        .item-grid {
+            box-shadow: 0 -1px 1px 0 rgba(0, 0, 0, .05), 0 1px 5px 0 rgba(0, 0, 0, .15);
+            color: #444 !important;
+            position: relative;
+        }
+
+        .item-grid h3 a {
+            color: #333;
+        }
+
+        .grid-cat {
+            position: absolute;
+            right: 0px;
+            top: 0;
+            background-color: #53155c;
+            padding: 1px 5px;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .grid-info span:first-child {
+            margin-left: 15px;
+        }
+    </style>
+{% endblock style %}
+
+{% block content %}
+
+    <main>
+        <!--grid display-->
+        <section class="grid-section container-fluid">
+            <div class="grid-list flex-column">
+                {% for article in article_list %}
+                    <article class="item-grid d-flex mb-3">
+                        <span class="grid-cat">{{ article.category }}</span>
+                        <div class="grid-img">
+                            <a href="#"><img
+                                    src="{{ article.image.url }}"
+                                    alt=""></a>
+                        </div>
+                        <div class="grid-content d-flex flex-column py-4 px-3">
+                            <h3 class="mb-3"><a href="#">{{ article.title }}</a></h3>
+                            <div class="grid-info mb-3 d-flex align-items-center">
+                                <span>خرداد 1401</span>
+                            </div>
+                            <div class="grid-summery">
+                                {{ article.description | truncatechars:500 }}
+                            </div>
+                        </div>
+                    </article>
+                {% empty %}
+                    <h1 class="text-center">هیچ مقاله ای موجود نمیباشد</h1>
+                {% endfor %}
+            </div>
+        </section>
+        <!--end grid display-->
+    </main>
+
+
+{% endblock content %}

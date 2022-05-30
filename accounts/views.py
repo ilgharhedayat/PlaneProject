@@ -145,7 +145,7 @@ class UserRegisterVerifyCodeView(AnonymousRequiredMixin, View):
             print(cd)
             print(code_instance.code)
             if cd["code"] == code_instance.code:
-                user.objects.create_user(
+                user_obj = user.objects.create_user(
                     first_name=user_session["first_name"],
                     last_name=user_session["last_name"],
                     user_name=user_session["user_name"],
@@ -153,6 +153,7 @@ class UserRegisterVerifyCodeView(AnonymousRequiredMixin, View):
                     phone_number=user_session["phone_number"],
                     password=user_session["password"],
                 )
+                login(request, user_obj)
                 code_instance.delete()
                 messages.success(request, "you registered.", "success")
                 return redirect("accounts:dashboard")

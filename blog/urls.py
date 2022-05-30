@@ -1,8 +1,9 @@
 from .views import ArticleListView, CategoryListView, ArticleDetailView
 from django.urls import path
 
-app_name = 'job'
+app_name = 'blog'
 urlpatterns = [
-    path('', CategoryListView.as_view(), name='category'),
+    path('', ArticleListView.as_view(), name='list'),
+    path('category/', CategoryListView.as_view(), name='category'),
     path('article/<int:id>/', ArticleListView.as_view(), name='detail')
 ]

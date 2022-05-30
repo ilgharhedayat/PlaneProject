@@ -85,16 +85,23 @@ class PassengerView(View):
         return render(request, self.template_name, context)
 
     def post(self, request):
+        email = request.user.email
+        phone_number = request.user.phone_number
+        print(request.POST.get('airline_name'))
+        airline = get_object_or_404(Airline, name=request.POST.get('airline_name'))
+        if request.POST.get('email'):
+            email = request.POST.get('email')
+            phone_number = request.POST.get('phone_number')
 
         reserve = Reservation.objects.create(
             user_id=request.user.id,
             air_line=airline,
-            fly_code='s',
-            source='',
-            target='ds',
-            date='0',
-            email='me@parsa.best',
-            phone_number='0',
+            fly_code=request.POST.get('fly_code', '5487'),
+            source=request.POST.get('source'),
+            target=request.POST.get('target'),
+            date=request.POST.get('date'),
+            email=email,
+            phone_number=phone_number,
             paid=False
         )
         passengers = []
