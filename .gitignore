@@ -5,7 +5,8 @@
 .DS_Store
 .AppleDouble
 .LSOverride
-
+static_cdn/
+/static_cdn
 # Icon must end with two \r
 Icon
 
