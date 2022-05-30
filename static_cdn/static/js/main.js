@@ -55,7 +55,7 @@ $(document).ready(function () {
         $(this).toggleClass('open');
     });
     /* new codes */
-    $(".side-tab .text-body").click(function (event) {
+$(".side-tab .text-body").click(function (event) {
         event.preventDefault();
         let dataTab = $(this).data("tab");
         $(".text-body span").css("background-color", "transparent")
@@ -63,7 +63,7 @@ $(document).ready(function () {
         $(".select-area").addClass("d-none");
         $("." + dataTab).removeClass("d-none");
     })
-    $("#returnDateHotel").persianDatepicker({
+$("#returnDateHotel").persianDatepicker({
         altField: '#returnDateHotel',
         altFormat: "YYYY/MM/DD",
         observer: false,
@@ -72,7 +72,7 @@ $(document).ready(function () {
         initialValueType: 'persian',
         autoClose: true,
     });
-    $("#goDateHotel").persianDatepicker({
+$("#goDateHotel").persianDatepicker({
         altField: '#goDateHotel',
         altFormat: "YYYY/MM/DD",
         observer: false,
@@ -81,7 +81,7 @@ $(document).ready(function () {
         initialValueType: 'persian',
         autoClose: true,
     });
-    $("#hotelSrc").focus(function () {
+$("#hotelSrc").focus(function () {
         fetch('http://localhost/php/plane/cities.json')
             .then(res => res.json())
             .then(data => getDataFromJson(data))
@@ -140,9 +140,9 @@ $(function () {
         if (id) {
             $(`#${id}`).persianDatepicker({
                 altField: `#${id}`,
-                altFormat: "MM/DD",
+                altFormat: "YYYY/MM/DD",
                 observer: false,
-                format: 'MM/DD',
+                format: "YYYY/MM/DD",
                 initialValue: false,
                 initialValueType: 'persian',
                 autoClose: true,
@@ -353,8 +353,8 @@ $("#jobs-scroller").click(function () {
 })
 
 
-$(document).ready(function(){
-        $(".panel-header").click(function(){
-          $(this).next().children(".panel-display").slideToggle();
-        })
-      })
+$(document).ready(function () {
+    $(".panel-header").click(function () {
+        $(this).next().children(".panel-display").slideToggle();
+    })
+})
