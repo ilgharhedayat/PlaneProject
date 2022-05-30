@@ -140,9 +140,9 @@ $(function () {
         if (id) {
             $(`#${id}`).persianDatepicker({
                 altField: `#${id}`,
-                altFormat: "MM/DD",
+                altFormat: "YYYY/MM/DD",
                 observer: false,
-                format: 'MM/DD',
+                format: "YYYY/MM/DD",
                 initialValue: false,
                 initialValueType: 'persian',
                 autoClose: true,
@@ -353,8 +353,8 @@ $("#jobs-scroller").click(function () {
 })
 
 
-$(document).ready(function(){
-        $(".panel-header").click(function(){
-          $(this).next().children(".panel-display").slideToggle();
-        })
-      })
+$(document).ready(function () {
+    $(".panel-header").click(function () {
+        $(this).next().children(".panel-display").slideToggle();
+    })
+})
